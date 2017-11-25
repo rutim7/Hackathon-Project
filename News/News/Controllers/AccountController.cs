@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using News.Helpers;
 using News.Models;
 
 namespace News.Controllers
@@ -73,8 +74,11 @@ namespace News.Controllers
             {
                 return View(model);
             }
-
-            // This doesn't count login failures towards account lockout
+             var blobContainer = new SenTimeBlobContainer();
+            //    profile.AvatarOriginal = blobContainer.GetOriginalPictureAndSave(imageContent, profile.AvatarOriginal, MonitaCloudBlobContainer.ProfileAvatarOriginal);
+            //    profile.AvatarBig = blobContainer.GetProfileBigAvatar(imageContent, profile.AvatarBig);
+            //    profile.AvatarSmall = blobContainer.GetProfileSmallAvatar(imageContent, profile.AvatarSmall);
+            //// This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
