@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Core;
+using Domain.Core.Entity;
 using Domain.Interfaces;
 
 namespace Data.Repositories
