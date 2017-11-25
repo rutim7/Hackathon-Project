@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Services.Interfaces.Impl
 {
-    class AppUserService : AppUserRepository, 
+    class AppUserService : AppUserRepository , IAppUserRepository
     {
     }
 }
