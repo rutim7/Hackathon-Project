@@ -5,7 +5,9 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Data;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using News.Models;
@@ -17,15 +19,13 @@ namespace News.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private IServiceManager manager;
 
-        public AccountController()
+        public AccountController(IServiceManager manager)
         {
-        }
-
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
+            this.manager = manager;
+            UserStore<ApplicationUser> store = new UserStore<ApplicationUser>(manager.DbContext);
+            _userManager = new ApplicationUserManager(store);
         }
 
         public ApplicationSignInManager SignInManager
@@ -58,6 +58,7 @@ namespace News.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            var org = manager.OrganisationService;
             return View();
         }
 
