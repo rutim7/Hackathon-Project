@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
-using Domain.Core;
+using Domain.Core.Entity;
 using Data;
 
 namespace News.Controllers
@@ -64,16 +64,16 @@ namespace News.Controllers
         {
             //_id = 0;
             //return View(AllCategories);
-            List<Domain.Core.News> news = new List<Domain.Core.News>()
+            List<NewsItem> news = new List<NewsItem>()
             {
-                new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggggggggggggggg"},
-                new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggggggggggggggg"},
-                new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggggggggggggggg"},
-                new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggggggggggggggg"},
-                new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggggggggggggggg"},
-                new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggggggggggggggg"},
-                new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggggggggggggggg"},
-                new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggggggggggggggg"}
+                new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
+                new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
+                new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
+                new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
+                new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
+                new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
+                new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
+                new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"}
             };
             return View(news);
         }

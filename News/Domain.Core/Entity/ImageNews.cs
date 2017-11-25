@@ -11,6 +11,6 @@ namespace Domain.Core.Entity
         public int Id { get; set; }
         public string ImageThumbnail { get; set; }
         public int NewsId { get; set; }
-        public virtual News News { get; set; }
+        public virtual NewsItem News { get; set; }
     }
 }

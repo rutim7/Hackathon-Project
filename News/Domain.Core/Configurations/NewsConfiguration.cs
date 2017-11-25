@@ -8,7 +8,7 @@ using Domain.Core.Entity;
 
 namespace Domain.Core.Configurations
 {
-    public class NewsConfiguration : EntityTypeConfiguration<News>
+    public class NewsConfiguration : EntityTypeConfiguration<NewsItem>
     {
         public NewsConfiguration()
         {

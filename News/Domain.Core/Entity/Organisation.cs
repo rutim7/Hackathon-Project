@@ -17,6 +17,6 @@ namespace Domain.Core.Entity
         public virtual ICollection<ApplicationUser> Subscribers { get; set; }
         public virtual int OrganisationId { get; set; }
 
-        public virtual ICollection<News> News { get; set; }
+        public virtual ICollection<NewsItem> News { get; set; }
     }
 }
