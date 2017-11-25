@@ -36,9 +36,19 @@ textarea {
     min-width: 50px;
     
 }
-.container .panel-body {
+.content-news {
+     word-wrap: break-word;
+    padding: 10px 10px 10px 10px;
+}
+/*.container .panel-body {
     height: 170px;
     word-wrap: break-word;
+}*/
+.container .panel-default {
+    height:300px;
+}
+.container .navbar navbar-default {
+    margin-top: -49px;
 }
     
 .filter {
@@ -66,6 +76,28 @@ label {
 .subCategoryName {
     font-size: 30px; 
 }
+.container .panel-default img{
+    height: 60%;
+    width: 100%;
+    background-size: cover;
+}
+  div.center-div {
+    position: relative }
+
+
+ .news-header {
+     text-align: center;
+     vertical-align: middle;
+ } 
+/*div.center-div p {
+    margin: 0;
+    background: yellow;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+}*/  
 .main-page-news-list .news-list-item, .main-page-news-list .longread-list-item {
     height: 360px;
     margin: 0 40px 40px 0;

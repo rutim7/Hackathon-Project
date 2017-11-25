@@ -1,23 +1,21 @@
 ﻿@*@model IList<News.Controllers.NewsController.Categories>*@
-@using Domain.Core.Entity;
-@model List<NewsItem>
+@using Domain.Core;
+@model List<Domain.Core.Entity.NewsItem>
+@{
+    ViewBag.Title = "Index";
+}
 
-    @{
-        ViewBag.Title = "Index";
-    }
-               <div class="row">
+<div class="row">
 
-                   <div class="container">
-                       <div class="row row-flex row-flex-wrap">
+        <div class="row row-flex row-flex-wrap">
 
                            @foreach (var n in Model)
                            {
                            @Html.Partial("_NewsItem",n)
                            }
 
-                       </div><!--/row-->
-                   </div><!--/container-->
-                   <hr>
+        </div><!--/row-->
+    <hr>
 
                </div>
 

@@ -212,7 +212,7 @@ namespace News.Helpers
         /// <param name="fileName">File name(url).</param>
         /// <param name="fileType">File type.</param>
         /// <param name="fileContent">File content in bytes array.</param>
-        private void SaveFile(string fileName, string fileType, byte[] fileContent)
+        public void SaveFile(string fileName, string fileType, byte[] fileContent)
         {
             CloudBlockBlob blob = _cloudBlobContainer.GetBlockBlobReference(fileName);
             blob.Properties.ContentType = fileType;

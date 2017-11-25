@@ -62,19 +62,18 @@ namespace News.Controllers
         // GET: News
         public ActionResult Index()
         {
-            //_id = 0;
-            //return View(AllCategories);
-            List<NewsItem> news = new List<NewsItem>()
-            {
-                new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
-                new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
-                new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
-                new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
-                new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
-                new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
-                new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
-                new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"}
-            };
+           List<NewsItem> news = new List<NewsItem>()
+           {
+               new NewsItem {Title ="ggggg",Text = "Ggggggffffffffffffffffffffffffffffffgggggggggggggggggggggggggg"},
+               new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggg"},
+               new NewsItem {Title ="ggggg",Text = "Ggggggggggggggggggggggggggg"},
+               new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggfewefvrevrevrvvrgggg"},
+               new NewsItem {Title ="ggggg",Text = "Ggggggsdcvdrgdgdgdgggggggggggggggggggggg"},
+               new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggg"},
+               new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggg"},
+               new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggg"}
+
+           };
             return View(news);
         }
         [HttpPost]
@@ -83,6 +82,12 @@ namespace News.Controllers
             _id = 0;
             var model = AllCategories.Where(x => x.Id == id).Select(sub => sub.SubCategories).FirstOrDefault();
             return PartialView("_SubCategories", model);
+        }
+
+        public ActionResult CreateNews ()
+        {
+
+            return View();
         }
 
         [HttpPost]
