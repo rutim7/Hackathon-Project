@@ -8,7 +8,7 @@ using Domain.Interfaces;
 
 namespace Data.Repositories
 {
-    public abstract class GenericRepository<TEntity> where TEntity : class
+    public abstract class GenericRepository<TEntity> :IGeneralService<TEntity> where TEntity : class 
     {
         protected readonly SentimeContext Context;
         protected readonly DbSet<TEntity> DbSet;
