@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Impl\AppUserRepository.cs" />
-    <Compile Include="NewsHackatonContext.cs" />
+    <Compile Include="SenTimeContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Abstract\GenericRepository.cs" />
     <Compile Include="Impl\OrganisationRepository.cs" />

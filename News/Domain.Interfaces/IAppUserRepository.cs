@@ -7,7 +7,7 @@ using Domain.Core;
 
 namespace Domain.Interfaces
 {
-    interface IAppUserRepository: IDisposable, IGeneralService<ApplicationUser>
+   public interface IAppUserService: IDisposable, IGeneralService<ApplicationUser>
     {
     }
 }

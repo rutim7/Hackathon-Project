@@ -9,6 +9,7 @@ namespace Data
 {
     public interface IServiceManager
     {
+        IAppUserService AppUserService { get; }
         IOrganisationService OrganisationService { get; }
         SentimeContext DbContext { get; }
     }

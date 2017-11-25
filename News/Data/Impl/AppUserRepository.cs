@@ -8,7 +8,7 @@ using Domain.Core;
 
 namespace Data.Impl
 {
-    class AppUserRepository:GenericRepository<Organisation>
+    public class AppUserRepository : GenericRepository<ApplicationUser>
     {
         public AppUserRepository(SentimeContext context) : base(context)
         {

@@ -1,0 +1,14 @@
+﻿@model Domain.Core.News
+
+@{
+    ViewBag.Title = "_NewsItem";
+}
+
+<div class="col-md-3">
+    <div class="panel panel-default flex-col">
+        <div class="panel-heading">@Model.Title</div>
+        <div class="panel-body flex-grow">@Model.Content</div>
+        <div class="panel-footer">Footer</div>
+    </div>
+</div>
+

@@ -1,0 +1,22 @@
+﻿@using Domain.Core;
+@model List<News>
+List<
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+
+    <div class="container">
+        <div class="row row-flex row-flex-wrap">
+
+            @foreach (var n in Model)
+            {
+                @Html.Partial("_NewsItem",n)
+            }
+
+        </div><!--/row-->
+    </div><!--/container-->
+    <hr>
+
+</div>
