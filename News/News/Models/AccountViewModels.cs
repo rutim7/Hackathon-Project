@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace News.Models
 {
@@ -60,6 +61,8 @@ namespace News.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        private HttpPostedFileBase file { get; set; }
     }
 
     public class RegisterViewModel
