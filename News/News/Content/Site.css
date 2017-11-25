@@ -22,3 +22,47 @@ select,
 textarea {
     max-width: 280px;
 }
+.avatar-menu {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+}
+.post-avatar > a > img {
+    top: 10px;
+    border-radius: 50%;
+    max-height: 50px;
+    max-width: 50px;
+    min-height: 50px;
+    min-width: 50px;
+    
+}
+.container .panel-body {
+    height: 170px;
+    word-wrap: break-word;
+}
+    
+.filter {
+    vertical-align: top;
+}
+label {
+    padding-right: 15px;
+}
+
+.chooseCategories {
+    cursor: pointer;
+}
+.category {
+    padding: 8px 0;
+    margin: 5px 5px 10px 30px;
+    border:1px #d8d8d8 solid;
+    text-align: center;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+}
+.category:hover {
+    background: #d8d8d8;
+    cursor: pointer;
+} 
+.subCategoryName {
+    font-size: 30px; 
+}
