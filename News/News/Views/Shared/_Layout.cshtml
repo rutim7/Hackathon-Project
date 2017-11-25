@@ -3,27 +3,25 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link rel="stylesheet" type="text/css" href="glyphicons.css" />
+    <title>@ViewBag.Title - SendInTime</title>
+   @* <link rel="stylesheet" type="text/css" href="glyphicons.css" />*@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
      
                 <ul class="nav navbar-nav">               
                     <li class="dropdown">
-                        <a class="dropdown-toggle glyphicon glyphicon-menu-hamburger" data-toggle="dropdown" href="#">
-                            @*Page 1*@
-                            @*<span class="caret"></span>*@
+                        <a class="dropdown-toggle glyphicon glyphicon-list" data-toggle="dropdown" href="#">
+                           
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Page 1-1</a></li>
-                            <li><a href="#">Page 1-2</a></li>
-                            <li><a href="#">Page 1-3</a></li>
+                            <li><a href="#">Create News</a></li>
+                            <li><a href="#">My Groups</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -35,7 +33,24 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>*@
-                @Html.Partial("_LoginPartial")
+                @*@Html.Partial("_LoginPartial")*@
+                <div class="head-auth-ava pull-right ">
+                    <span class="post-avatar">
+                        <a  href="">
+                            <img src="http://cdn.fishki.net/upload/post/201504/13/1500568/guy-fawkes-mask-v-for-vendetta-i7.jpg" alt="">
+                        </a>
+                    </span>
+                    <div class="dropdown avatar-menu">
+                        <a class=" dropdown-toggle" type="button" data-toggle="dropdown">
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Your profile</a></li>
+                            <li><a href="#">Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

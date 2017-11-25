@@ -22,3 +22,22 @@ select,
 textarea {
     max-width: 280px;
 }
+.avatar-menu {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+}
+.post-avatar > a > img {
+    top: 10px;
+    border-radius: 50%;
+    max-height: 50px;
+    max-width: 50px;
+    min-height: 50px;
+    min-width: 50px;
+    
+}
+.container .panel-body {
+    height: 170px;
+    word-wrap: break-word;
+}
+    

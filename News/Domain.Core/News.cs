@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Core
 {
-    class News
+    public class News
     {
+        public string Title { get; set; }
+        public string Content { get; set; }
     }
 }
