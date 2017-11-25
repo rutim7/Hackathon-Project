@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Data;
 using Data.Impl;
 using Data.Repositories;
-using Domain.Core;
 using Domain.Interfaces;
 
 namespace Services.Interfaces.Impl

@@ -1,4 +1,4 @@
-﻿@model Domain.Core.News
+﻿@model Domain.Core.Entity.NewsItem
 
 @{
     ViewBag.Title = "_NewsItem";
@@ -6,10 +6,10 @@
 
 <div class="col-md-4 col-xs-6">
     <div class="panel panel-default flex-col">
-        <img class="img-responsive" src=@Url.Content(Model.ImagePath) />
+        <img class="img-responsive" @*src=@Url.Content(Model.ImagePath)*@ />
 
         <div class="panel-heading">@Model.Title</div>
-        <div class="content-news flex-grow">@Model.Content</div>
+        <div class="content-news flex-grow">@Model.Text</div>
 
     </div>
 </div>

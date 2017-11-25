@@ -57,9 +57,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationUser.cs" />
-    <Compile Include="News.cs" />
-    <Compile Include="Organisation.cs" />
+    <Compile Include="Configurations\ImageNewsConfiguration.cs" />
+    <Compile Include="Configurations\NewsConfiguration.cs" />
+    <Compile Include="Entity\ApplicationUser.cs" />
+    <Compile Include="Configurations\ApplicationUserConfiguration.cs" />
+    <Compile Include="Configurations\OrganisationConfiguration.cs" />
+    <Compile Include="Entity\ImageNews.cs" />
+    <Compile Include="Entity\NewsItem.cs" />
+    <Compile Include="Entity\Organisation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

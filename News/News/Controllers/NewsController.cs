@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
-using Domain.Core;
+using Domain.Core.Entity;
 using Data;
 
 namespace News.Controllers
@@ -62,16 +62,16 @@ namespace News.Controllers
         // GET: News
         public ActionResult Index()
         {
-           List<Domain.Core.News> news = new List<Domain.Core.News>()
+           List<NewsItem> news = new List<NewsItem>()
            {
-               new Domain.Core.News {Title ="ggggg",Content = "Ggggggffffffffffffffffffffffffffffffgggggggggggggggggggggggggg",ImagePath ="~/Content/NewsImages/1.png"},
-               new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggg",ImagePath ="~/Content/NewsImages/2.png"},
-               new Domain.Core.News {Title ="ggggg",Content = "Ggggggggggggggggggggggggggg",ImagePath ="~/Content/NewsImages/3.png"},
-               new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggggggfewefvrevrevrvvrgggg",ImagePath ="~/Content/NewsImages/4.png"},
-               new Domain.Core.News {Title ="ggggg",Content = "Ggggggsdcvdrgdgdgdgggggggggggggggggggggg",ImagePath ="~/Content/NewsImages/2.png"},
-               new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggggggggggg",ImagePath ="~/Content/NewsImages/1.png"},
-               new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggggggggggg",ImagePath ="~/Content/NewsImages/3.png"},
-               new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggggggggggg",ImagePath ="~/Content/NewsImages/4.png"}
+               new NewsItem {Title ="ggggg",Text = "Ggggggffffffffffffffffffffffffffffffgggggggggggggggggggggggggg"},
+               new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggg"},
+               new NewsItem {Title ="ggggg",Text = "Ggggggggggggggggggggggggggg"},
+               new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggfewefvrevrevrvvrgggg"},
+               new NewsItem {Title ="ggggg",Text = "Ggggggsdcvdrgdgdgdgggggggggggggggggggggg"},
+               new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggg"},
+               new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggg"},
+               new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggg"}
 
            };
             return View(news);
