@@ -64,16 +64,16 @@ namespace News.Controllers
         {
             //_id = 0;
             //return View(AllCategories);
-            List<Domain.Core.News> news = new List<Domain.Core.News>()
+            List<Domain.Core.Entity.News> news = new List<Domain.Core.Entity.News>()
             {
-                new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggggggggggggggg"},
-                new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggggggggggggggg"},
-                new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggggggggggggggg"},
-                new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggggggggggggggg"},
-                new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggggggggggggggg"},
-                new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggggggggggggggg"},
-                new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggggggggggggggg"},
-                new Domain.Core.News {Title ="ggggg",Content = "Gggggggggggggggggggggggggggggggg"}
+                new Domain.Core.Entity.News {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
+                new Domain.Core.Entity.News {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
+                new Domain.Core.Entity.News {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
+                new Domain.Core.Entity.News {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
+                new Domain.Core.Entity.News {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
+                new Domain.Core.Entity.News {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
+                new Domain.Core.Entity.News {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"},
+                new Domain.Core.Entity.News {Title ="ggggg",Text = "Gggggggggggggggggggggggggggggggg"}
             };
             return View(news);
         }

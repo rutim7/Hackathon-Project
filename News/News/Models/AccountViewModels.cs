@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Web;
+using Domain.Core.Entity;
 
 namespace News.Models
 {
@@ -60,6 +63,15 @@ namespace News.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+        
+        
+     }
+
+    public class OrganisationViewModel : Organisation
+    {
+        [NotMapped]
+        public HttpPostedFileBase Image { get; set; }
+
     }
 
     public class RegisterViewModel

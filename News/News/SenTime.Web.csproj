@@ -217,7 +217,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
-    <Compile Include="Controllers\GroupController.cs" />
+    <Compile Include="Controllers\OrganisationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -292,8 +292,8 @@
     <Content Include="Views\Shared\_FilterNews.cshtml" />
     <Content Include="Views\Shared\_SubCategories.cshtml" />
     <Content Include="Views\News\_NewsItem.cshtml" />
-    <Content Include="Views\Group\CreateGroup.cshtml" />
-    <Content Include="Views\Group\Index.cshtml" />
+    <Content Include="Views\Organisation\Create.cshtml" />
+    <Content Include="Views\Organisation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
