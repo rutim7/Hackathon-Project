@@ -4,11 +4,13 @@
     ViewBag.Title = "_NewsItem";
 }
 
-<div class="col-md-3">
+<div class="col-md-4 col-xs-6">
     <div class="panel panel-default flex-col">
+        <img class="img-responsive" src="~/Content/NewsImages/look.com.ua-68097.png" />
+
         <div class="panel-heading">@Model.Title</div>
-        <div class="panel-body flex-grow">@Model.Content</div>
-        <div class="panel-footer">Footer</div>
+        <div class="content-news flex-grow">@Model.Content</div>
+
     </div>
 </div>
 

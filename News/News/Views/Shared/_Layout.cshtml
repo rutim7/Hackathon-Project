@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - SendInTime</title>
+    <title>@ViewBag.Title - SenTime</title>
    @* <link rel="stylesheet" type="text/css" href="glyphicons.css" />*@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -12,6 +12,7 @@
 <body>
     <div class="container navbar navbar-default">
         <div class="container">
+            
             <div class="navbar-header">
      
                 <ul class="nav navbar-nav">               
@@ -25,23 +26,29 @@
                         </ul>
                     </li>
                 </ul>
-                @Html.ActionLink("SendInTime", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("SenTime", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                
             </div>
             <div class="navbar-collapse collapse">
+                <span class="news-header">News</span>
                 @*<ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>*@
                 @*@Html.Partial("_LoginPartial")*@
+                
+                @*<div class="center-div">
+                    <p>News</p>
+                </div>*@
                 <div class="head-auth-ava pull-right ">
                     <span class="post-avatar">
-                        <a  href="">
+                        <a href="">
                             <img src="http://cdn.fishki.net/upload/post/201504/13/1500568/guy-fawkes-mask-v-for-vendetta-i7.jpg" alt="">
                         </a>
                     </span>
                     <div class="dropdown avatar-menu">
-                        <a class=" dropdown-toggle" type="button" data-toggle="dropdown">
+                        <a class="dropdown-toggle" type="button" data-toggle="dropdown">
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
@@ -52,13 +59,13 @@
                 </div>
 
             </div>
-        </div>
+</div>
     </div>
     <div class="container body-content">
         @RenderBody()
         @*<hr />*@
         <footer>
-            <p>&copy; @DateTime.Now.Year - SendInTime</p>
+            <p>&copy; @DateTime.Now.Year - SenTime</p>
         </footer>
     </div>
 
