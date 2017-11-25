@@ -257,6 +257,7 @@
     </Compile>
     <Compile Include="Helpers\Consts.cs" />
     <Compile Include="Helpers\SenTimeBlobContainer.cs" />
+    <Compile Include="Hubs\NewsHub.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

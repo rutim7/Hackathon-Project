@@ -59,7 +59,8 @@
   <ItemGroup>
     <Compile Include="IAppUserRepository.cs" />
     <Compile Include="IGeneralService.cs" />
-    <Compile Include="IOrganisationRepository.cs" />
+    <Compile Include="INewsService.cs" />
+    <Compile Include="IOrganisationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

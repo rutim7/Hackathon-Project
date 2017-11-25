@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Impl\AppUserRepository.cs" />
+    <Compile Include="Impl\NewsRepository.cs" />
     <Compile Include="Migrations\201711251924566_Initial.cs" />
     <Compile Include="Migrations\201711251924566_Initial.Designer.cs">
       <DependentUpon>201711251924566_Initial.cs</DependentUpon>

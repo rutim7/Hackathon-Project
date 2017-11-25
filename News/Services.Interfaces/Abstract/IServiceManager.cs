@@ -11,6 +11,7 @@ namespace Data
     {
         IAppUserService AppUserService { get; }
         IOrganisationService OrganisationService { get; }
+        INewsService NewsService { get; }
         SentimeContext DbContext { get; }
     }
 }
