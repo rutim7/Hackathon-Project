@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using Domain.Core.Entity;
 using Data;
+using News.Helpers;
 
 namespace News.Controllers
 {
@@ -87,8 +89,43 @@ namespace News.Controllers
         public ActionResult CreateNews ()
         {
 
-            return View();
+            return View("CreateNews");
         }
+
+        //[Authorize]
+        //[HttpPost]
+        //public ActionResult CreateNews(NewsItem model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (model.Image.FileName == String.Empty)
+        //        {
+        //            return new HttpStatusCodeResult(400, "Failed to upload image");
+        //        }
+        //        else if (!model.Image.ContentType.Contains("data:image"))
+        //        {
+        //            var blobContainer = new SenTimeBlobContainer();
+        //            Organisation org;
+        //            using (var memoryStream = new MemoryStream())
+        //            {
+        //                model.Image.InputStream.CopyTo(memoryStream);
+        //                blobContainer.SaveFile(model.Image.FileName, model.Image.ContentType, memoryStream.ToArray());
+        //                model.Avatar = model.Image.FileName;
+        //                org = new Organisation()
+        //                {
+        //                    Name = model.Name,
+        //                    Avatar = model.Image.FileName
+        //                };
+        //                manager.OrganisationService.Add(org);
+        //                manager.OrganisationService.SaveChanges();
+        //            }
+        //            return RedirectToAction("Datails", new { id = org.Id });
+
+        //        }
+
+        //    }
+        //    return null;
+        //}
 
         [HttpPost]
         public JsonResult SetNewSubCategories(int id)
