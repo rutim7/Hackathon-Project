@@ -7,6 +7,8 @@
    @* <link rel="stylesheet" type="text/css" href="glyphicons.css" />*@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
 
 </head>
 <body>
@@ -32,6 +34,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li><a class="chooseCategories">Вибрати категорії</a></li>
                 </ul>*@
                 @*@Html.Partial("_LoginPartial")*@
                 <div class="head-auth-ava pull-right ">
@@ -62,8 +65,6 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>

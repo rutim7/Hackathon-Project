@@ -1,22 +1,73 @@
-﻿@using Domain.Core;
+﻿@*@model IList<News.Controllers.NewsController.Categories>*@
+@using Domain.Core;
 @model List<News>
-List<
-@{
-    ViewBag.Title = "Index";
-}
 
-<div class="row">
+    @{
+        ViewBag.Title = "Index";
+    }
+               <div class="row">
 
-    <div class="container">
-        <div class="row row-flex row-flex-wrap">
+                   <div class="container">
+                       <div class="row row-flex row-flex-wrap">
 
-            @foreach (var n in Model)
-            {
-                @Html.Partial("_NewsItem",n)
-            }
+                           @foreach (var n in Model)
+                           {
+                           @Html.Partial("_NewsItem",n)
+                           }
 
-        </div><!--/row-->
-    </div><!--/container-->
-    <hr>
+                       </div><!--/row-->
+                   </div><!--/container-->
+                   <hr>
 
+               </div>
+
+    @*@Html.Partial("_FilterNews",Model)*@
+
+<div class="modal fade" id="modalSubCategories" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-sub-category" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title name-category"></h4>
+            </div>
+            <div class="modal-body body-for-subCategoties">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default close-sub-category" data-dismiss="modal">Гаразд</button>
+            </div>
+        </div>
+
+    </div>
 </div>
+
+<script>
+        $(document).ready(function () {
+            $(".chooseCategories").click(function () {
+                $("#modalCategories").modal('show');
+            });
+
+            $('.category').click(function () {
+                var id = $(this).attr('data-id');
+                var categoryName = $(this).text();
+                $.ajax({
+                    url: '@Url.Action("GetSubCategories","News")',
+                    data: { id: id },
+                    method: 'post',
+                    type: "html",
+                    success: function (data) {
+                        $("#modalCategories").modal('hide');
+                        $(".body-for-subCategoties").html(data);
+                        $('#modalSubCategories').modal('show');
+                        $(".name-category").text(categoryName);
+                    }
+                });
+            });
+
+            $(".close-sub-category").click(function () {
+                $("#modalCategories").modal('show');
+                $('#modalSubCategories').modal('hide');
+            });
+        });
+    </script>
