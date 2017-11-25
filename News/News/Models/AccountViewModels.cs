@@ -67,8 +67,18 @@ namespace News.Models
         
      }
 
-    public class OrganisationViewModel : Organisation
+    public class OrganisationViewModel 
     {
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string OwnerId { get; set; }
+        public int Rating { get; set; }
+        public virtual ApplicationUser Owner { get; set; }
+        public virtual ICollection<ApplicationUser> Subscribers { get; set; }
+        public virtual int OrganisationId { get; set; }
+        public string Avatar { get; set; }
+
+        public virtual ICollection<Domain.Core.Entity.News> News { get; set; }
         [NotMapped]
         public HttpPostedFileBase Image { get; set; }
 

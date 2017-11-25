@@ -2,36 +2,37 @@
 
 @using (Html.BeginForm("Create", "Organisation", FormMethod.Post, new
 {
-    @class = "form-horizontal", role = "form", id = "SOMEMYID" ,
+    @class = "form-horizontal",
+    role = "form",
+    id = "SOMEMYID",
     enctype = "multipart/form-data"
 }))
 {
-    @Html.HiddenFor(model => model.Id)
 
     @Styles.Render("~/Content/DropdownCountry/DropdownCountry")
     <!-- panel-body -->
 
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.Id)
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group organisation-name" style="padding-top: 25px;">
             <div class="row">
                 <div class="col-md-12">
-                    @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
-                    <div class="col-md-10" style="margin-bottom: 35px;">
+                    @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-1" })
+                    <div class="col-md-11" style="margin-bottom: 35px;">
                         @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                     </div>
-                    @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
-                    <div class="col-md-10" style="margin-bottom: 35px;">
-                        <input type="file" name="Image" id="file" style="width: 100%;" /> 
+                    @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-1" })
+                    <div class="col-md-11" style="margin-bottom: 35px;">
+                        <input type="file" name="Image" id="file" style="width: 100%;" />
                         @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" })
                     </div>
+                    <button type="submit" class="col-md-1 col-md-offset-2">Створити</button>
                 </div>
-                <button type="submit">Створити</button>
+
             </div>
         </div>
-        </div>
+    </div>
 }
 

@@ -255,6 +255,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Consts.cs" />
     <Compile Include="Helpers\SenTimeBlobContainer.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -331,9 +332,11 @@
     <Content Include="Views\News\_NewsItem.cshtml" />
     <Content Include="Views\Organisation\Create.cshtml" />
     <Content Include="Views\Organisation\Index.cshtml" />
+    <Content Include="Views\Organisation\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Helpers\NewFolder1\" />
     <Folder Include="Views\Image\" />
   </ItemGroup>
   <ItemGroup>
