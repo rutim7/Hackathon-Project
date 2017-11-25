@@ -22,3 +22,28 @@ select,
 textarea {
     max-width: 280px;
 }
+.filter {
+    vertical-align: top;
+}
+label {
+    padding-right: 15px;
+}
+
+.chooseCategories {
+    cursor: pointer;
+}
+.category {
+    padding: 8px 0;
+    margin: 5px 5px 10px 30px;
+    border:1px #d8d8d8 solid;
+    text-align: center;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+}
+.category:hover {
+    background: #d8d8d8;
+    cursor: pointer;
+} 
+.subCategoryName {
+    font-size: 30px; 
+}
