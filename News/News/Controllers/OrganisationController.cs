@@ -12,12 +12,14 @@ using News.Models;
 
 namespace News.Controllers
 {
+    [Authorize]
     public class OrganisationController : Controller
     {
         // GET: Organisation
         public ActionResult Index()
         {
-            return View();
+            
+            return View(manager.OrganisationService.Find(3));
         }
 
         private IServiceManager manager;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Data.Repositories;
+using Domain.Core.Entity;
 using Domain.Interfaces;
 
 namespace Data.Services
@@ -18,6 +19,11 @@ namespace Data.Services
         {
          
         }
+
+        //public List<NewsItem> News(Organisation organisation)
+        //{
+        //    return Context.Entry(organisation).Entity.News.ToList();
+        //}
 
         public void Save()
         {

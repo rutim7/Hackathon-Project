@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Abstract\IServiceManager.cs" />
     <Compile Include="Impl\AppUserService.cs" />
+    <Compile Include="Impl\NewsService.cs" />
     <Compile Include="Impl\OrganisationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Abstract\ServiceManager.cs" />

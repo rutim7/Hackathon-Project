@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Data;
+using Domain.Core.Entity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -25,8 +26,10 @@ namespace News.Controllers
         public AccountController(IServiceManager manager)
         {
             this.manager = manager;
-            UserStore<ApplicationUser> store = new UserStore<ApplicationUser>(manager.DbContext);
-            _userManager = new ApplicationUserManager(store);
+            //UserStore<ApplicationUser> store = new UserStore<ApplicationUser>(manager.DbContext);
+            //UserManager = new ApplicationUserManager(store);
+            //AuthenticationManager = authenticationManager;
+            //SignInManager = new ApplicationSignInManager(UserManager, AuthenticationManager);
         }
 
         public ApplicationSignInManager SignInManager
@@ -35,9 +38,9 @@ namespace News.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 

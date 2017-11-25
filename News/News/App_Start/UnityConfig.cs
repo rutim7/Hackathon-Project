@@ -43,8 +43,7 @@ namespace News
             // Make sure to add a Unity.Configuration to the using statements.
             // container.LoadConfiguration();
             container.RegisterType<IServiceManager, ServiceManager>();
-            container.RegisterType<IAuthenticationManager>(
-                new InjectionFactory(c => HttpContext.Current.GetOwinContext().Authentication));
+           
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
         }
