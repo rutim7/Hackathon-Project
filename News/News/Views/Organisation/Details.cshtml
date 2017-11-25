@@ -1,0 +1,11 @@
+﻿@model Domain.Core.Entity.Organisation
+@using News.Helpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <img src="@Consts.AzureImagePath@Model.Avatar" class="col-md-1">
+    <div class="col-md-11">@Model.Name</div>
+</div>
+

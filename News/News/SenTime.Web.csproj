@@ -251,9 +251,11 @@
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\OrganisationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Consts.cs" />
     <Compile Include="Helpers\SenTimeBlobContainer.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -332,6 +334,9 @@
     <Content Include="Views\Shared\_FilterNews.cshtml" />
     <Content Include="Views\Shared\_SubCategories.cshtml" />
     <Content Include="Views\News\_NewsItem.cshtml" />
+    <Content Include="Views\Organisation\Create.cshtml" />
+    <Content Include="Views\Organisation\Index.cshtml" />
+    <Content Include="Views\Organisation\Details.cshtml" />
     <Content Include="Views\News\CreateNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
