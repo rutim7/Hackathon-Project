@@ -234,6 +234,7 @@
     <Content Include="Content\NewsImages\2.png" />
     <Content Include="Content\NewsImages\3.png" />
     <Content Include="Content\NewsImages\4.png" />
+    <Content Include="Content\jquery.multiselect.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -247,6 +248,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.multiselect.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -290,7 +292,10 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\Shared\_FilterNews.cshtml" />
+    <Content Include="Views\Shared\_SubCategories.cshtml" />
     <Content Include="Views\News\_NewsItem.cshtml" />
+    <Content Include="Views\News\CreateNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

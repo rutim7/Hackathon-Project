@@ -1,0 +1,25 @@
+﻿@model IList<News.Controllers.NewsController.SubCategories>
+<div class="row">
+    @if (Model != null)
+    {
+        
+        foreach (var subCategory in Model)
+        {
+            <div class="SubField col-md-3">
+                @Html.HiddenFor(x => subCategory.ParentId, new {@class="ParentId"})
+                @Html.CheckBoxFor(x => subCategory.isChecked, new {@class = "subCategoryCheckBox"})
+                @Html.DisplayFor(x => subCategory.Name, new {@class = "subCategoryName"})
+            </div>
+        }
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("input[type=checkbox]").on("click", function () {
+            $.ajax({
+            });
+        });
+    });
+
+</script>

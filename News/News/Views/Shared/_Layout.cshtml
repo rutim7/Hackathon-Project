@@ -7,6 +7,8 @@
    @* <link rel="stylesheet" type="text/css" href="glyphicons.css" />*@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
 
 </head>
 <body>
@@ -17,12 +19,21 @@
      
                 <ul class="nav navbar-nav">               
                     <li class="dropdown">
-                        <a class="dropdown-toggle glyphicon glyphicon-list" data-toggle="dropdown" href="#">
-                           
-                        </a>
+                        <a class="dropdown-toggle glyphicon glyphicon-align-justify" data-toggle="dropdown" href="#"></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Create News</a></li>
-                            <li><a href="#">My Groups</a></li>
+                            @*<li><a href="#"><i class="glyphicon glyphicon-plus"></i>Add News</a></li>*@
+                            <li>
+                                <a href="@Url.Action("CreateNews", "News")">
+                                    <i class="glyphicon glyphicon-plus"></i>
+                                    <span>Add news</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "News")">
+                                    <i class="glyphicon glyphicon glyphicon-briefcase"></i>
+                                    <span>My Organisations</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -35,6 +46,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li><a class="chooseCategories">Вибрати категорії</a></li>
                 </ul>*@
                 @*@Html.Partial("_LoginPartial")*@
                 
@@ -52,8 +64,20 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Your profile</a></li>
-                            <li><a href="#">Sign out</a></li>
+                            <li>
+                                <a href="@Url.Action("Index", "Home")">
+                                    <i class="glyphicon glyphicon glyphicon-user"></i>
+                                    <span>Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Login", "Account")">
+                                    <i class="glyphicon glyphicon glyphicon-log-out"></i>
+                                    <span>Sign out</span>
+                                </a>
+                            </li>
+          
+     
                         </ul>
                     </div>
                 </div>
@@ -69,8 +93,6 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>

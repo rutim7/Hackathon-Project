@@ -1,0 +1,50 @@
+﻿@model Domain.Core.News
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*@{
+    ViewBag.Title = "Create News";
+}*@
+
+@*<h2>@ViewBag.Title.</h2>*@
+
+@using (Html.BeginForm("CreateNews", "News", FormMethod.Post @*new { @class = "form-horizontal", role = "form" }*@))
+{
+    <h4>Create a new news.</h4>
+    <hr />
+   
+    <div class="form-group">
+        @Html.LabelFor(m => Model.Title, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => Model.Title, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => Model.Content, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => Model.Content, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => Model.ImagePath, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => Model.ImagePath, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Create" />
+        </div>
+    </div>
+}
+@*@using (Html.BeginForm("CreateNews", "News", FormMethod.Post))
+{
+    <input type="hidden" value="@ViewBag.BookId" name="BookId" />
+    <p>Введите свое имя: </p>
+    @Html.TextBox("Person", "Введите имя")
+    <p>Введите адрес :</p>
+    @Html.TextBox("Address", "Введите адрес")
+    <p><input type="submit" value="Отправить" /></p>
+}*@
+
+
