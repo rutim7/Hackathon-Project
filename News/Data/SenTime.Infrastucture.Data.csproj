@@ -71,6 +71,22 @@
     <Compile Include="Migrations\201711260015400_addUserCatogery.Designer.cs">
       <DependentUpon>201711260015400_addUserCatogery.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711260129550_fsdsfd.cs" />
+    <Compile Include="Migrations\201711260129550_fsdsfd.Designer.cs">
+      <DependentUpon>201711260129550_fsdsfd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711260252507_fsdsfd1.cs" />
+    <Compile Include="Migrations\201711260252507_fsdsfd1.Designer.cs">
+      <DependentUpon>201711260252507_fsdsfd1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711260257410_fsdsfddf.cs" />
+    <Compile Include="Migrations\201711260257410_fsdsfddf.Designer.cs">
+      <DependentUpon>201711260257410_fsdsfddf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711260310453_fsdsfddff.cs" />
+    <Compile Include="Migrations\201711260310453_fsdsfddff.Designer.cs">
+      <DependentUpon>201711260310453_fsdsfddff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SenTimeContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,6 +116,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711260015400_addUserCatogery.resx">
       <DependentUpon>201711260015400_addUserCatogery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711260129550_fsdsfd.resx">
+      <DependentUpon>201711260129550_fsdsfd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711260252507_fsdsfd1.resx">
+      <DependentUpon>201711260252507_fsdsfd1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711260257410_fsdsfddf.resx">
+      <DependentUpon>201711260257410_fsdsfddf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711260310453_fsdsfddff.resx">
+      <DependentUpon>201711260310453_fsdsfddff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
