@@ -8,7 +8,8 @@ using Domain.Core.Entity;
 
 namespace Domain.Interfaces
 {
-    public interface IAppUserService: IDisposable, IGeneralService<ApplicationUser>
+    public interface IAppUserService : IDisposable, IGeneralService<ApplicationUser>
     {
+        ApplicationUser GetByName(string id);
     }
 }

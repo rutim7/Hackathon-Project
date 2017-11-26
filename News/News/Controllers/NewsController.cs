@@ -7,11 +7,12 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using Domain.Core.Entity;
 using Data;
+using News.Controllers.abstr;
 using News.Helpers;
 
 namespace News.Controllers
 {
-    public class NewsController : Controller
+    public class NewsController : GenerallController
     {
         public static int _id = 0;
 
@@ -56,7 +57,7 @@ namespace News.Controllers
         }
 
         private IServiceManager manager;
-        public NewsController(IServiceManager manager)
+        public NewsController(IServiceManager manager):base(manager)
         {
             this.manager = manager;
         }
