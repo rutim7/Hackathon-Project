@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using Domain.Core.Entity;
 using Data;
+using Domain.Core.Enums;
 using News.Controllers.abstr;
 using News.Helpers;
 
@@ -63,22 +65,22 @@ namespace News.Controllers
         }
 
         // GET: News
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-           List<NewsItem> news = new List<NewsItem>()
-           {
-               new NewsItem {Title ="ggggg",Text = "Ggggggffffffffffffffffffffffffffffffgggggggggggggggggggggggggg"},
-               new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggg"},
-               new NewsItem {Title ="ggggg",Text = "Ggggggggggggggggggggggggggg"},
-               new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggfewefvrevrevrvvrgggg"},
-               new NewsItem {Title ="ggggg",Text = "Ggggggsdcvdrgdgdgdgggggggggggggggggggggg"},
-               new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggg"},
-               new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggg"},
-               new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggg"}
+            IEnumerable<NewsItem> news;
 
-           };
-            return View(news);
+            if (CurrentUser == null)
+            {
+                news = await manager.NewsService.GetAll();
+                return View(news.ToList());
+            }
+
+            List<string> filterCategiries = CategoryHelper.GetUserCategory(CurrentUser.UserCategories);
+            news = manager.NewsService.GetNewsByCategory(filterCategiries);
+
+            return View(news.ToList());
         }
+
         [HttpPost]
         public ActionResult GetSubCategories(int id)
         {
