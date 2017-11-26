@@ -9,6 +9,6 @@ namespace Domain.Interfaces
 {
     public interface INewsService : IDisposable, IGeneralService<NewsItem>
     {
-       
+        IEnumerable<NewsItem> GetNewsByCategory(List<string> filterCategiries);
     }
 }
