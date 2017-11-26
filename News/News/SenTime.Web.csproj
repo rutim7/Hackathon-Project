@@ -256,6 +256,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CategoryHelper.cs" />
     <Compile Include="Helpers\Consts.cs" />
     <Compile Include="Helpers\SenTimeBlobContainer.cs" />
     <Compile Include="Hubs\NewsHub.cs" />

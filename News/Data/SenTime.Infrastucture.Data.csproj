@@ -67,6 +67,10 @@
     <Compile Include="Migrations\201711252105359_AndriySergenuk_1.Designer.cs">
       <DependentUpon>201711252105359_AndriySergenuk_1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711260015400_addUserCatogery.cs" />
+    <Compile Include="Migrations\201711260015400_addUserCatogery.Designer.cs">
+      <DependentUpon>201711260015400_addUserCatogery.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SenTimeContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711252105359_AndriySergenuk_1.resx">
       <DependentUpon>201711252105359_AndriySergenuk_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711260015400_addUserCatogery.resx">
+      <DependentUpon>201711260015400_addUserCatogery.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
