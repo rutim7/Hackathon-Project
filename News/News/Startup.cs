@@ -8,6 +8,7 @@ namespace News
     {
         public void Configuration(IAppBuilder app)
         {
+            app.MapSignalR();
             ConfigureAuth(app);
         }
     }

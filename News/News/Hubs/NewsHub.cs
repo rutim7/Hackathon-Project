@@ -8,7 +8,7 @@ namespace News.Hubs
 {
     public class NewsHub:Hub
     {
-        public void Send(NewsItem model)
+        public void Send(string model)
         {
             // Call the broadcastMessage method to update clients.
             Clients.All.broadcastMessage(model);
