@@ -1,16 +1,49 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
+
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
     @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            @*<li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>*@
+        </ul>
+                            <div class="head-auth-ava pull-right ">
+                        <span class="post-avatar">
+                            <a href="">
+                                <img src="http://cdn.fishki.net/upload/post/201504/13/1500568/guy-fawkes-mask-v-for-vendetta-i7.jpg" alt="">
+                            </a>
+                        </span>
+                        <div class="dropdown avatar-menu">
+                            <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="@Url.Action("Index", "Home")">
+                                        <i class="glyphicon glyphicon glyphicon-user"></i>
+                                        <span>Profile</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:document.getElementById('logoutForm').submit()">
+                                        <i class="glyphicon glyphicon glyphicon-log-out"></i>
+                                        <span>Sign out</span>
+                                    </a>
+                                </li>
+                                @*<li>
+                                    <a href="@Url.Action("Login", "Account")">
+                                        <i class="glyphicon glyphicon glyphicon-log-out"></i>
+                                        <span>Sign out</span>
+                                    </a>
+                                </li>*@                    
+                            </ul>
+                        </div>
+                    </div>
     }
 }
 else

@@ -1,25 +1,16 @@
-﻿@model IList<News.Controllers.NewsController.SubCategories>
+﻿@using Domain.Core.Enums
+@model List<string>
 <div class="row">
     @if (Model != null)
     {
-        
-        foreach (var subCategory in Model)
+        var arrayCater = Enum.GetValues(typeof(Category));
+        foreach (var category in arrayCater)
         {
-            <div class="SubField col-md-3">
-                @Html.HiddenFor(x => subCategory.ParentId, new {@class="ParentId"})
-                @Html.CheckBoxFor(x => subCategory.isChecked, new {@class = "subCategoryCheckBox"})
-                @Html.DisplayFor(x => subCategory.Name, new {@class = "subCategoryName"})
+            <div class="col-md-4">
+                <input type="checkbox" id="@category" value="@category" class="checkCategory" @*checked="@{Model.Contains(category) ? checked : String.Empty}"*@/>
+                <label for="@category">@category</label>
             </div>
         }
     }
 </div>
 
-<script>
-    $(document).ready(function () {
-        $("input[type=checkbox]").on("click", function () {
-            $.ajax({
-            });
-        });
-    });
-
-</script>
