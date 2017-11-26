@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using Data;
 using Domain.Core.Entity;
-using News.Controllers.abstr;
+using News.Controllers.Abstract;
 using News.Helpers;
 using News.Models;
 
