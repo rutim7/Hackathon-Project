@@ -42,48 +42,55 @@
 
             </div>
             <div class="navbar-collapse collapse">
-                @*<span class="news-header">News</span>*@
-                <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
+@if (Request.IsAuthenticated)
+{
+    <ul class="nav navbar-nav">
+        @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
-                    <li><a class="chooseCategories">Вибрати категорії</a></li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-
+        <li><a class="chooseCategories">Вибрати категорії</a></li>
+    </ul>
+    }
                 @*<div class="center-div">
                         <p>News</p>
                     </div>*@
-                @if (Request.IsAuthenticated) { 
-                    <div class="head-auth-ava pull-right ">
-                        <span class="post-avatar">
-                            <a href="">
-                                <img src="http://cdn.fishki.net/upload/post/201504/13/1500568/guy-fawkes-mask-v-for-vendetta-i7.jpg" alt="">
-                            </a>
-                        </span>
-                        <div class="dropdown avatar-menu">
-                            <a class="dropdown-toggle" type="button" data-toggle="dropdown">
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="@Url.Action("Index", "Home")">
-                                        <i class="glyphicon glyphicon glyphicon-user"></i>
-                                        <span>Profile</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Action("Login", "Account")">
-                                        <i class="glyphicon glyphicon glyphicon-log-out"></i>
-                                        <span>Sign out</span>
-                                    </a>
-                                </li>
+                @Html.Partial("_LoginPartial")
+             @*   @if (Request.IsAuthenticated)
+    {
+        <div class="head-auth-ava pull-right ">
+            <span class="post-avatar">
+                <a href="">
+                    <img src="http://cdn.fishki.net/upload/post/201504/13/1500568/guy-fawkes-mask-v-for-vendetta-i7.jpg" alt="">
+                </a>
+            </span>
+            <div class="dropdown avatar-menu">
+                <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="@Url.Action("Index", "Home")">
+                            <i class="glyphicon glyphicon glyphicon-user"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Login", "Account")">
+                            <i class="glyphicon glyphicon glyphicon-log-out"></i>
+                            <span>Sign out</span>
+                        </a>
+                    </li>
 
 
-                            </ul>
-                        </div>
-                    </div>
-                }
+                </ul>
+            </div>
+        </div>*@
+                @*}*@
+                @*else
+                {
+                    @Html.Partial("_LoginPartial")
+
+                }*@
 
             </div>
         </div>
