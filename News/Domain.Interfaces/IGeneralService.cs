@@ -8,7 +8,7 @@ namespace Domain.Interfaces
 {
     public interface IGeneralService<T> where T : class
     {
-        Task<IEnumerable<T>> GetAll();
+        IEnumerable<T> GetAll();
         T FindSync(object id);
         Task<T> Find(object id);
         void Add(T entity);

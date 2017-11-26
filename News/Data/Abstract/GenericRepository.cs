@@ -19,9 +19,10 @@ namespace Data.Repositories
             DbSet = Context.Set<TEntity>();
         }
 
-        public async Task<IEnumerable<TEntity>> GetAll()
+        public IEnumerable<TEntity> GetAll()
         {
-           return await DbSet.ToListAsync();
+           
+            return  DbSet.AsEnumerable();
         }
         public TEntity FindSync(object id)
         {

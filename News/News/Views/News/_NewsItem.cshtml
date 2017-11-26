@@ -1,16 +1,26 @@
 ﻿@using News.Helpers
 @model Domain.Core.Entity.NewsItem
 @{
-    string val = Model.index+ ".png";
+    string val;
+    if (ViewBag.HardCode==true)
+    {
+        val = "Content/NewsImages/"+ Model.index + ".png";
+    }
+
+    else
+    {
+        val = Consts.AzureImagePath+ Model.AvatarNews;
+    }
+
 }
 
-    
+
 <li class="news-list-item longread-list-item" data-longread-pubdate="2017-11-23T22:58:36">
     <div class="longread-block ">
         <a class="longread-block--img-holder" href="/articles/kak-delat-zakazyi-naaliexpress-sumom-10-klyuchevyih-nyuansov-371227/">
             <img title="@Model.Title" alt="Как делать заказы на&nbsp;Aliexpress с&nbsp;умом: 10 ключевых нюансов" width="293" height="250"
-                 src="@Consts.AzureImagePath@Model.AvatarNews" class="longread-block--img">
-
+                 src = "Content/NewsImages/White_square.png"
+                 @*src="~/Content/NewsImages/@val"*@ class="longread-block--img">
         </a><!-- longread-block-img-holder -->
         <div class="longread-block-wrapper">
             <div class="longread-block-title">

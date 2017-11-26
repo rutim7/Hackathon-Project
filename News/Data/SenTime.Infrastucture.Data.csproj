@@ -93,6 +93,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Abstract\GenericRepository.cs" />
     <Compile Include="Impl\OrganisationRepository.cs" />
+    <Compile Include="SenTmeIniazlizator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

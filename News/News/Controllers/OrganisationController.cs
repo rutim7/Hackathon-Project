@@ -16,10 +16,10 @@ namespace News.Controllers
     public class OrganisationController : GenerallController
     {
         // GET: Organisation
-        public async Task<ActionResult> Index()
+        public  ActionResult Index()
         {     
             //return View(manager.OrganisationService.Find(1));
-            var listOrganisations = await manager.OrganisationService.GetAll();
+            var listOrganisations =  manager.OrganisationService.GetAll();
             return View("ListOrganisations", listOrganisations);
         }
 
@@ -65,11 +65,11 @@ namespace News.Controllers
                 const int heightLarge = 450;
 
                 var blobContainer = new SenTimeBlobContainer();
-                Organisation organisation = manager.OrganisationService.FindSync(id);
-                organisation.Avatar = blobContainer.GetPictureWithDefinedSizeAndExtention(imageContent, organisation.Avatar, widthLarge, heightLarge,
+                NewsItem organisation = manager.NewsService.FindSync(id);
+                organisation.AvatarNews = blobContainer.GetPictureWithDefinedSizeAndExtention(imageContent, organisation.AvatarNews, widthLarge, heightLarge,
                     "Jpeg", "");
-                manager.OrganisationService.UpdateEntity(organisation);
-                manager.OrganisationService.SaveChanges();
+                manager.NewsService.UpdateEntity(organisation);
+                manager.NewsService.SaveChanges();
 
             }
             return Json(new {js="sucess"});
@@ -109,8 +109,8 @@ namespace News.Controllers
                         manager.OrganisationService.Add(org);
                         manager.OrganisationService.SaveChanges();
                     }
-                    //return RedirectToAction("Details", new { id = org.Id });
-                    return RedirectToAction("Index", "User");
+                    return RedirectToAction("Details", new { id = org.Id });
+                    //return RedirectToAction("Index", "User");
 
 
 

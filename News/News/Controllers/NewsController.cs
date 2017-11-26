@@ -18,15 +18,14 @@ namespace News.Controllers
 {
     public class NewsController : GenerallController
     {
-        private IServiceManager manager;
 
         public NewsController(IServiceManager manager) : base(manager)
         {
-            this.manager = manager;
+           
         }
         public  ActionResult GetAllNewsInOrganisation(int id)
         {
-            var organisation = manager.OrganisationService.FindSync(id);
+            var organisation = _manager.OrganisationService.FindSync(id);
             return PartialView("_OrganisationNews", organisation.News.ToList());
         }
 
@@ -35,27 +34,75 @@ namespace News.Controllers
             return View("_NewsItem",model);
         }
         // GET: News
-        public async Task<ActionResult> Index()
+        public  ActionResult Index()
         {
-           
-            IEnumerable<NewsItem> news;
-            if (CurrentUser == null)
-            {
-                news = await manager.NewsService.GetAll();
-                return View(news.ToList());
-            }
 
+            //IEnumerable<NewsItem> news;
+            //if (CurrentUser == null)
+            //{
+            //    news = _manager.NewsService.GetAll();
+            //    return View(news.ToList());
+            //}
+
+            //ViewBag.HasCategory = !string.IsNullOrEmpty(CurrentUser.UserCategories);
+            //if (ViewBag.HasCategory)
+            //{
+            //    List<string> filterCategiries = CategoryHelper.GetUserCategory(CurrentUser.UserCategories);
+            //    news = _manager.NewsService.GetNewsByCategory(filterCategiries);
+            //}
+            //else
+            //{
+            //    news = _manager.NewsService.GetAll();
+            //}
             ViewBag.HasCategory = !string.IsNullOrEmpty(CurrentUser.UserCategories);
-            if (ViewBag.HasCategory)
+            List<NewsItem> news = new List<NewsItem>()
             {
-                List<string> filterCategiries = CategoryHelper.GetUserCategory(CurrentUser.UserCategories);
-                news = manager.NewsService.GetNewsByCategory(filterCategiries);
-            }
-            else
-            {
-                news = await manager.NewsService.GetAll();
-            }
-
+                new NewsItem
+                {
+                    Title = "Як робити замовлення на AliExpress.10 ключових моментів",
+                    Text = "Як почати купувати  і  бути щасливим",
+                    index = 1
+                },
+                new NewsItem
+                {
+                    Title = "Запрошуєм всіх на Хакатон",
+                    Text = "Що таке Хакатон та історії про Хакатоняшок",
+                    index = 2
+                },
+                new NewsItem {Title = "Дівчата з Хакатону", Text = "Найкращі дівчата які відвідали Хакатон", index = 3},
+                new NewsItem
+                {
+                    Title = "Пожена в центральній частині міста",
+                    Text = "Найдзвичайна ситуація відбулася в центральній частині міста. Троє постраждалих",
+                    index = 4
+                },
+                new NewsItem
+                {
+                    Title = "Страшилки у  Івано-Франківську",
+                    Text = "Історія про Чорну Марію, про Бабая ",
+                    index = 5
+                },
+                new NewsItem
+                {
+                    Title = "Знову у Франківську",
+                    Text = "На околицях Франківська, у Вовчинецьках викрали курей.",
+                    index = 6
+                },
+                new NewsItem
+                {
+                    Title = "Користь та шкода алкоголю",
+                    Text = "Наша редакція дослідити це питання власноруч та готова" +
+                           "поділитися з вами своїми висновками",
+                    index = 7
+                },
+                new NewsItem
+                {
+                    Title = "Рецензія на Лігу Справедливості",
+                    Text = "Згадуєм хто такий Бетмен, Чудо-Жінка та знайомимось з новими персонажами",
+                    index = 8
+                }
+            };
+            ViewBag.HardCode = true;
             return View(news.ToList());
         }
 
@@ -72,24 +119,27 @@ namespace News.Controllers
                 else if (!image.ContentType.Contains("data:image"))
                 {
                     var blobContainer = new SenTimeBlobContainer();
-                    NewsItem newsItem;
+                  
                     using (var memoryStream = new MemoryStream())
                     {
                         image.InputStream.CopyTo(memoryStream);
                         blobContainer.SaveFile(image.FileName, image.ContentType, memoryStream.ToArray());
-                        newsItem = new NewsItem()
-                        {
-                            Title = title,
-                            Text = text,
-                            AvatarNews = image.FileName,
-                            OrganisationId = orgId,
-                            DateCreated = DateTime.Now,
-                            Category = category
-                        };
-                        manager.NewsService.Add(newsItem);
-                        manager.NewsService.SaveChanges();
+                        
+                        
+                        
                     }
-                    return RedirectToAction("Details","Organisation",new {id=orgId});
+                    NewsItem newsItem = new NewsItem()
+                    {
+                        Title = title,
+                        Text = text,
+                        AvatarNews = image.FileName,
+                        OrganisationId = orgId,
+                        DateCreated = DateTime.Now,
+                        Category = category
+                    };
+                    _manager.NewsService.Add(newsItem);
+                    _manager.NewsService.SaveChanges();
+                return RedirectToAction("Details","Organisation",new {id=orgId});
 
                 }
             return null;
@@ -98,8 +148,8 @@ namespace News.Controllers
         public JsonResult SaveCategories(string categories)
         {
             CurrentUser.UserCategories = categories;
-           manager.AppUserService.UpdateEntity(CurrentUser);
-            manager.AppUserService.SaveChanges();
+            _manager.AppUserService.UpdateEntity(CurrentUser);
+            _manager.AppUserService.SaveChanges();
             return Json(new {status="OK"});
         }
 

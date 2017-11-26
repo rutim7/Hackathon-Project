@@ -11,7 +11,7 @@ namespace News.Controllers.Abstract
         // GET: General
         //public ApplicationUser CurrentUser { get; private set; }
         private IIdentity _identity;
-        private IServiceManager _manager;
+        protected IServiceManager _manager;
         public ApplicationUser CurrentUser { get; private set; }
         protected GenerallController(IServiceManager manager)
         {

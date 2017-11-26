@@ -14,11 +14,11 @@ namespace Data
     public class SentimeContext : IdentityDbContext<ApplicationUser>
     {
         //#region DbSet
-        //public virtual DbSet<Organisation> Organisations { get; set; }
+        public virtual DbSet<NewsItem> NewsItems { get; set; }
         //#endregion DbSet
         public SentimeContext():base("DefaultConnection")
         {
-            
+           
         }
 
         public static SentimeContext Create()
