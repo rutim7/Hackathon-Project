@@ -70,15 +70,22 @@ namespace News.Controllers
         public async Task<ActionResult> Index()
         {
             IEnumerable<NewsItem> news;
-
             if (CurrentUser == null)
             {
                 news = await manager.NewsService.GetAll();
                 return View(news.ToList());
             }
 
-            List<string> filterCategiries = CategoryHelper.GetUserCategory(CurrentUser.UserCategories);
-            news = manager.NewsService.GetNewsByCategory(filterCategiries);
+            ViewBag.HasCategory = !string.IsNullOrEmpty(CurrentUser.UserCategories);
+            if (ViewBag.HasCategory)
+            {
+                List<string> filterCategiries = CategoryHelper.GetUserCategory(CurrentUser.UserCategories);
+                news = manager.NewsService.GetNewsByCategory(filterCategiries);
+            }
+            else
+            {
+                news = await manager.NewsService.GetAll();
+            }
 
             return View(news.ToList());
         }
