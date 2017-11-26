@@ -16,6 +16,7 @@ namespace Domain.Core.Entity
         public int OrganisationId { get; set; }
         public Category Category { get; set; }
         public virtual Organisation Organisation { get; set; }
-        public virtual ICollection<ImageNews> Images { get; set; }
+        //public virtual ICollection<ImageNews> Images { get; set; }
+        public string AvatarNews { get; set; }
     }
 }
