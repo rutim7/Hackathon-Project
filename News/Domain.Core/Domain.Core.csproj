@@ -65,6 +65,7 @@
     <Compile Include="Entity\ImageNews.cs" />
     <Compile Include="Entity\NewsItem.cs" />
     <Compile Include="Entity\Organisation.cs" />
+    <Compile Include="Enums\Category.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

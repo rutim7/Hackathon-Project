@@ -7,28 +7,29 @@ using System.Web;
 using System.Web.Mvc;
 using Data;
 using Domain.Core.Entity;
+using News.Controllers.abstr;
 using News.Helpers;
 using News.Models;
 
 namespace News.Controllers
 {
-    [Authorize]
-    public class OrganisationController : Controller
+    public class OrganisationController : GenerallController
     {
         // GET: Organisation
         public ActionResult Index()
         {
             
-            return View(manager.OrganisationService.Find(3));
+            return View(manager.OrganisationService.Find(1));
         }
 
         private IServiceManager manager;
 
-        public OrganisationController(IServiceManager manager)
+        public OrganisationController(IServiceManager manager):base(manager)
         {
             this.manager = manager;
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Create()
         {
@@ -42,7 +43,7 @@ namespace News.Controllers
             return View("Details", organisation);
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         public ActionResult Create(OrganisationViewModel model)
         {
@@ -64,7 +65,7 @@ namespace News.Controllers
                          org= new Organisation()
                         {
                             Name = model.Name,
-                            Avatar = model.Image.FileName
+                            Avatar = model.Image.FileName                          
                         };
                         manager.OrganisationService.Add(org);
                         manager.OrganisationService.SaveChanges();

@@ -246,6 +246,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Controllers\Abstract\GenerallController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
@@ -255,6 +256,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CategoryHelper.cs" />
     <Compile Include="Helpers\Consts.cs" />
     <Compile Include="Helpers\SenTimeBlobContainer.cs" />
     <Compile Include="Hubs\NewsHub.cs" />
@@ -273,6 +275,7 @@
     <Content Include="Content\NewsImages\3.png" />
     <Content Include="Content\NewsImages\4.png" />
     <Content Include="Content\jquery.multiselect.css" />
+    <Content Include="Content\NewsImages\White_square.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -339,9 +342,11 @@
     <Content Include="Views\Organisation\Index.cshtml" />
     <Content Include="Views\Organisation\Details.cshtml" />
     <Content Include="Views\News\CreateNews.cshtml" />
+    <Content Include="Views\News\_CreateNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Generall\" />
     <Folder Include="Views\Image\" />
   </ItemGroup>
   <ItemGroup>

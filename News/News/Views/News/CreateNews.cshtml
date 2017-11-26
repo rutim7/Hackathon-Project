@@ -10,6 +10,7 @@
 
 @using (Html.BeginForm("CreateNews", "News", FormMethod.Post @*new { @class = "form-horizontal", role = "form" }*@))
 {
+    @Html.AntiForgeryToken()
     <h4>Create a new news.</h4>
     <hr />
    

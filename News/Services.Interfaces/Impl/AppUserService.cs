@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Data;
 using Data.Impl;
 using Data.Repositories;
+using Domain.Core.Entity;
 using Domain.Interfaces;
 
 namespace Services.Interfaces.Impl
@@ -19,6 +20,11 @@ namespace Services.Interfaces.Impl
         public void Dispose()
         {
             throw new NotImplementedException();
+        }
+
+        public ApplicationUser GetByName(string id)
+        {
+          return  DbSet.FirstOrDefault(n => n.Email == id);
         }
     }
 }
