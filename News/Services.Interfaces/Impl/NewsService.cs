@@ -26,7 +26,7 @@ namespace Services.Interfaces.Impl
 
             foreach (var item in filterCategiries)
             {
-                result.AddRange(DbSet.Where(n => n.Category.ToString() == item));
+                result.AddRange(DbSet.Where(n => n.Category.ToString() == item).OrderByDescending(n => n.DateCreated));
             }
 
             return result;

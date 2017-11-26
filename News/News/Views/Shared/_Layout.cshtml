@@ -38,13 +38,13 @@
                         </li>
                     </ul>
                 }
-                @Html.ActionLink("SenTime", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("SenTime", "Index", "News", new { area = "" }, new { @class = "navbar-brand" })
 
             </div>
             <div class="navbar-collapse collapse">
                 @*<span class="news-header">News</span>*@
                 <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @*<li>@Html.ActionLink("Home", "Index", "News")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     <li><a class="chooseCategories">Вибрати категорії</a></li>
@@ -67,7 +67,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="@Url.Action("Index", "Home")">
+                                    <a href="@Url.Action("Index", "News")">
                                         <i class="glyphicon glyphicon glyphicon-user"></i>
                                         <span>Profile</span>
                                     </a>
