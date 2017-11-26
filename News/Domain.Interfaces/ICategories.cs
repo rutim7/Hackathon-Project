@@ -8,6 +8,7 @@ using Domain.Core.Entity;
 namespace Domain.Interfaces
 {
    public interface ICategories:IDisposable, IGeneralService<Categories>
-    {
-    }
+   {
+       bool UserHasCategories(string userId);
+   }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using System.Web.Routing;
 using Domain.Core.Entity;
 using Data;
 using Domain.Core.Enums;
@@ -28,25 +29,24 @@ namespace News.Controllers
         public async Task<ActionResult> Index()
         {
             IEnumerable<NewsItem> news;
-
             if (CurrentUser == null)
             {
                 news = await manager.NewsService.GetAll();
                 return View(news.ToList());
             }
 
-            List<string> filterCategiries = CategoryHelper.GetUserCategory(CurrentUser.UserCategories);
-            news = manager.NewsService.GetNewsByCategory(filterCategiries);
+            ViewBag.HasCategory = !string.IsNullOrEmpty(CurrentUser.UserCategories);
+            if (ViewBag.HasCategory)
+            {
+                List<string> filterCategiries = CategoryHelper.GetUserCategory(CurrentUser.UserCategories);
+                news = manager.NewsService.GetNewsByCategory(filterCategiries);
+            }
+            else
+            {
+                news = await manager.NewsService.GetAll();
+            }
 
             return View(news.ToList());
-        }
-
-        [HttpPost]
-        public ActionResult GetSubCategories(int id)
-        {
-            //_id = 0;
-            //var model = AllCategories.Where(x => x.Id == id).Select(sub => sub.SubCategories).FirstOrDefault();
-            return PartialView("_SubCategories");
         }
 
         [Authorize]
@@ -83,10 +83,24 @@ namespace News.Controllers
                 }
             return null;
         }
-
-        public JsonResult SaveCategories(string category)
+        [HttpPost]
+        public JsonResult SaveCategories(string categories)
         {
-            return Json(new { });
+            CurrentUser.UserCategories = categories;
+           manager.AppUserService.UpdateEntity(CurrentUser);
+            manager.AppUserService.SaveChanges();
+            return Json(new {status="OK"});
         }
-   }
+
+        public ActionResult GetUserCategories()
+        {
+            List<string> model = new List<string>();
+            if (!string.IsNullOrEmpty(CurrentUser?.UserCategories))
+            {
+                model = CategoryHelper.GetUserCategory(CurrentUser.UserCategories);
+            }
+
+            return PartialView("_SubCategories", model);
+        }
+    }
 }

@@ -46,12 +46,15 @@
 
             </div>
             <div class="navbar-collapse collapse">
-                <span class="news-header">News</span>
+                @*<span class="news-header">News</span>*@
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                  @if (Request.IsAuthenticated)
+                  {
                     <li><a class="chooseCategories">Вибрати категорії</a></li>
+                  } 
                 </ul>
                 @Html.Partial("_LoginPartial")
 
@@ -90,14 +93,76 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        @*<hr />*@
-        @*<footer>
+<div class="container body-content">
+    @RenderBody()
+    @*<hr />*@
+    @*<footer>
                 <p>&copy; @DateTime.Now.Year - SenTime</p>
             </footer>*@
-    </div>
+</div>
+    
+<div class="modal fade" id="modalSubCategories" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-sub-category" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title name-category">Виберіть категорію</h4>
+            </div>
+            <div class="modal-body body-for-subCategoties">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default save-category" data-dismiss="modal">Гаразд</button>
+            </div>
+        </div>
 
+    </div>
+</div>
+<script>
+    $(document).on('click', '.chooseCategories', function () {
+        $.ajax({
+            url: '@Url.Action("GetUserCategories","News")',
+            data: {},
+            type:'post',
+            success:function(data) {
+                $('#modalSubCategories').modal('show');
+                $('.body-for-subCategoties').html(data);
+            }
+        });
+    });
+
+    var userStringCategory;
+    $(document).on("click",
+        ".checkCategory",
+        function () {
+            userStringCategory = '';
+            $.each($('.checkCategory'),
+                function () {
+                    if ($(this).is(':checked')) userStringCategory += $(this).attr('value') + ';';
+                });
+            userStringCategory = userStringCategory.substring(0, userStringCategory.length - 1);
+        });
+
+
+    $(document).on("click",
+        ".save-category",
+        function () {
+            $.ajax({
+                url: '@Url.Action("SaveCategories", "News")',
+                data: { categories: userStringCategory },
+                type: 'post',
+                success: function (data) {
+                    if (data.status === "OK") {
+                        window.location.href = '@Url.Action("Index", "News")';
+                    }
+                    else {
+                        alert("Сталося лихо! Повторіть пізніше");
+                    }
+                }
+            });
+
+        });
+</script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -19,5 +19,10 @@ namespace Services.Interfaces.Impl
         {
             throw new NotImplementedException();
         }
+
+        public bool UserHasCategories(string userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
