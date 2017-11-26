@@ -37,7 +37,7 @@ namespace News.Controllers
             return View("Create");
         }
 
-        public async Task<ActionResult> Datails(int id)
+        public async Task<ActionResult> Details(int id)
         {
             var organisation = await manager.OrganisationService.Find(id);
             return View("Details", organisation);
@@ -65,8 +65,9 @@ namespace News.Controllers
                          org= new Organisation()
                         {
                             Name = model.Name,
-                            Avatar = model.Image.FileName                          
-                        };
+                            Avatar = model.Image.FileName,
+                            OwnerId = CurrentUser.Id 
+                       };
                         manager.OrganisationService.Add(org);
                         manager.OrganisationService.SaveChanges();
                     }

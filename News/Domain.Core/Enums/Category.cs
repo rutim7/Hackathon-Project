@@ -27,6 +27,6 @@ namespace Domain.Core.Enums
         Auto = 6,
 
         [Display(Name = "Медицина")]
-        Medicine = 7,
+        Medicine = 7
     }
 }
