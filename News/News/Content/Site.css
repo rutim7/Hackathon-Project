@@ -253,3 +253,12 @@ a:hover {
 .ui-button-like-small:hover {
     color: #04A2D0!important;
 }
+
+.openModalCreatePost {
+    cursor: pointer;
+}
+.selectCategory {
+padding: 3px 15px;
+    font-size: 15px;
+}   
+

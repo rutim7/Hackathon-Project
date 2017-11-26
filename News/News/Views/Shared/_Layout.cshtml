@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - SenTime</title>
-   @* <link rel="stylesheet" type="text/css" href="glyphicons.css" />*@
+    @* <link rel="stylesheet" type="text/css" href="glyphicons.css" />*@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
@@ -14,36 +14,36 @@
 <body>
     <div class="container navbar navbar-default">
         <div class="container">
-            
+
             <div class="navbar-header">
-     @if (Request.IsAuthenticated)
-     {
-         <ul class="nav navbar-nav">
-             <li class="dropdown">
-                 <a class="dropdown-toggle glyphicon glyphicon-align-justify" data-toggle="dropdown" href="#"></a>
-                 <ul class="dropdown-menu">
-                     @*<li><a href="#"><i class="glyphicon glyphicon-plus"></i>Add News</a></li>*@
-                     <li>
-                         <a @*href="@Url.Action("CreateNews", "News")"*@>
-                             <i class="glyphicon glyphicon-plus"></i>
-                             <span>Add news</span>
-                         </a>
-                     </li>
-                     <li>
-                         <a href="@Url.Action("Index", "News")">
-                             <i class="glyphicon glyphicon glyphicon-briefcase"></i>
-                             <span>My Organisations</span>
-                         </a>
-                     </li>
-                     <li>
-                         <a href="@Url.Action("Create", "Organisation")">Create Group</a>
-                     </li>
-                 </ul>
-             </li>
-         </ul>
-     }
+                @if (Request.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle glyphicon glyphicon-align-justify" data-toggle="dropdown" href="#"></a>
+                            <ul class="dropdown-menu">
+                                @*<li><a href="#"><i class="glyphicon glyphicon-plus"></i>Add News</a></li>*@
+                                <li>
+                                    <a @*href="@Url.Action("CreateNews", "News")"*@>
+                                        <i class="glyphicon glyphicon-plus"></i>
+                                        <span>Add news</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "News")">
+                                        <i class="glyphicon glyphicon glyphicon-briefcase"></i>
+                                        <span>My Organisations</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Create", "Organisation")">Create Group</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                }
                 @Html.ActionLink("SenTime", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                
+
             </div>
             <div class="navbar-collapse collapse">
                 <span class="news-header">News</span>
@@ -54,10 +54,10 @@
                     <li><a class="chooseCategories">Вибрати категорії</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
-                
+
                 @*<div class="center-div">
-                    <p>News</p>
-                </div>*@
+                        <p>News</p>
+                    </div>*@
                 <div class="head-auth-ava pull-right ">
                     <span class="post-avatar">
                         <a href="">
@@ -81,61 +81,23 @@
                                     <span>Sign out</span>
                                 </a>
                             </li>
-          
-     
+
+
                         </ul>
                     </div>
                 </div>
 
             </div>
-</div>
-    </div>
-<div class="container body-content">
-    @RenderBody()
-    @*<hr />*@
-    @*<footer>
-            <p>&copy; @DateTime.Now.Year - SenTime</p>
-        </footer>*@
-</div>
-    
-    
-    <div class="modal fade" id="createNews" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Create a new news</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="title">Title:</label>
-                        <input type="text" class="form-control" id="title" style="max-width: 100%">
-                    </div>
-                    <div class="form-group">
-                        <label for="Text">Text:</label>
-                        <textarea class="form-control" rows="5" id="Text" style="max-width: 100%"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="image">Image:</label>
-                        <input type="file" name="Image" id="image" style="width: 100%;" />
-                    </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Create</button>
-                    </div>
-                </div>
-
         </div>
     </div>
-<script>
-    $(document).ready(function() {
-        $(".glyphicon-plus").click(function () {
-            $("#createNews").modal('show');
-        });
-    });
-</script>
-        @RenderSection("scripts", required: false)
+    <div class="container body-content">
+        @RenderBody()
+        @*<hr />*@
+        @*<footer>
+                <p>&copy; @DateTime.Now.Year - SenTime</p>
+            </footer>*@
+    </div>
+
+    @RenderSection("scripts", required: false)
 </body>
 </html>

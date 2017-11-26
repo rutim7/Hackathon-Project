@@ -17,7 +17,7 @@ namespace Domain.Core.Entity
         public int Rating { get; set; }
         public virtual ApplicationUser Owner { get; set; }
         public virtual ICollection<ApplicationUser> Subscribers { get; set; }
-        public virtual int OrganisationId { get; set; }
+        //public virtual int OrganisationId { get; set; }
         public string Avatar { get; set; }
 
         public virtual ICollection<NewsItem> News { get; set; }
