@@ -19,11 +19,7 @@ namespace News.Controllers
 
         public ActionResult Index()
         {
-            if(CurrentUser != null)
-            {
-                ViewBag.HasCategory = !string.IsNullOrEmpty(CurrentUser.UserCategories);
-            }
-            
+
             return View();
         }
 

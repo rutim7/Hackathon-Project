@@ -62,6 +62,7 @@
     <Compile Include="Entity\ApplicationUser.cs" />
     <Compile Include="Configurations\ApplicationUserConfiguration.cs" />
     <Compile Include="Configurations\OrganisationConfiguration.cs" />
+    <Compile Include="Entity\Categories.cs" />
     <Compile Include="Entity\ImageNews.cs" />
     <Compile Include="Entity\NewsItem.cs" />
     <Compile Include="Entity\Organisation.cs" />
