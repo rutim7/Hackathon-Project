@@ -1,0 +1,24 @@
+﻿@using News.Helpers
+@model IEnumerable<Domain.Core.Entity.Organisation>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<div class="container">
+    @foreach(var org in Model) { 
+        <div class="list-group row col-md-3" style="margin-right:5px">
+            <div class="list-group-item ">
+                <div class="post-avatar" style="display: table-cell; vertical-align: top">
+                    <a href="">
+                        <img src="@Consts.AzureImagePath@org.Avatar" alt="">
+                    </a>
+                </div>
+                <div style="display: table-cell; vertical-align: top; padding-left: 7px">
+                    <h5 >@org.Name</h5>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>

@@ -22,21 +22,17 @@
                         <li class="dropdown">
                             <a class="dropdown-toggle glyphicon glyphicon-align-justify" data-toggle="dropdown" href="#"></a>
                             <ul class="dropdown-menu">
-                                @*<li><a href="#"><i class="glyphicon glyphicon-plus"></i>Add News</a></li>*@
                                 <li>
-                                    <a @*href="@Url.Action("CreateNews", "News")"*@>
-                                        <i class="glyphicon glyphicon-plus"></i>
-                                        <span>Add news</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Action("Index", "News")">
+                                    <a href="@Url.Action("Index", "Organisation")">
                                         <i class="glyphicon glyphicon glyphicon-briefcase"></i>
-                                        <span>My Organisations</span>
+                                        <span>Мої Організації</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="@Url.Action("Create", "Organisation")">Create Group</a>
+                                    <a href="@Url.Action("Create", "Organisation")">                              
+                                        <i class="glyphicon glyphicon-plus-sign"></i>
+                                        <span>Створити Організацію</span>
+                                    </a>
                                 </li>
                             </ul>
                         </li>
@@ -46,11 +42,11 @@
 
             </div>
             <div class="navbar-collapse collapse">
-                <span class="news-header">News</span>
+                @*<span class="news-header">News</span>*@
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     <li><a class="chooseCategories">Вибрати категорії</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -58,34 +54,36 @@
                 @*<div class="center-div">
                         <p>News</p>
                     </div>*@
-                <div class="head-auth-ava pull-right ">
-                    <span class="post-avatar">
-                        <a href="">
-                            <img src="http://cdn.fishki.net/upload/post/201504/13/1500568/guy-fawkes-mask-v-for-vendetta-i7.jpg" alt="">
-                        </a>
-                    </span>
-                    <div class="dropdown avatar-menu">
-                        <a class="dropdown-toggle" type="button" data-toggle="dropdown">
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="@Url.Action("Index", "Home")">
-                                    <i class="glyphicon glyphicon glyphicon-user"></i>
-                                    <span>Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("Login", "Account")">
-                                    <i class="glyphicon glyphicon glyphicon-log-out"></i>
-                                    <span>Sign out</span>
-                                </a>
-                            </li>
+                @if (Request.IsAuthenticated) { 
+                    <div class="head-auth-ava pull-right ">
+                        <span class="post-avatar">
+                            <a href="">
+                                <img src="http://cdn.fishki.net/upload/post/201504/13/1500568/guy-fawkes-mask-v-for-vendetta-i7.jpg" alt="">
+                            </a>
+                        </span>
+                        <div class="dropdown avatar-menu">
+                            <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="@Url.Action("Index", "Home")">
+                                        <i class="glyphicon glyphicon glyphicon-user"></i>
+                                        <span>Profile</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Login", "Account")">
+                                        <i class="glyphicon glyphicon glyphicon-log-out"></i>
+                                        <span>Sign out</span>
+                                    </a>
+                                </li>
 
 
-                        </ul>
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                }
 
             </div>
         </div>

@@ -16,10 +16,11 @@ namespace News.Controllers
     public class OrganisationController : GenerallController
     {
         // GET: Organisation
-        public ActionResult Index()
-        {
-            
-            return View(manager.OrganisationService.Find(1));
+        public async Task<ActionResult> Index()
+        {     
+            //return View(manager.OrganisationService.Find(1));
+            var listOrganisations = await manager.OrganisationService.GetAll();
+            return View("ListOrganisations", listOrganisations);
         }
 
         private IServiceManager manager;
@@ -40,6 +41,8 @@ namespace News.Controllers
         public async Task<ActionResult> Details(int id)
         {
             var organisation = await manager.OrganisationService.Find(id);
+            ViewBag.IsOwner = CurrentUser.Id == organisation.OwnerId;
+
             return View("Details", organisation);
         }
 
@@ -71,7 +74,7 @@ namespace News.Controllers
                         manager.OrganisationService.Add(org);
                         manager.OrganisationService.SaveChanges();
                     }
-                    return RedirectToAction("Datails", new { id = org.Id});
+                    return RedirectToAction("Details", new { id = org.Id});
 
                 }
                

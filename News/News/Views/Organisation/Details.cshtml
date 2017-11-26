@@ -11,7 +11,13 @@
     <div class="col-md-11 col-xs-10">
         <h4 style="vertical-align: middle">@Model.Name</h4>
     </div>
-    <div class="openModalCreatePost">Додати пост</div>
+    @*<div class="openModalCreatePost">Додати пост</div>*@
+    @if (ViewBag.isOwner) {
+        <div class="openModalCreatePost">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span>Додати пост</span>
+        </div>
+    }
 </div>
 @Html.Partial("_CreateNews", Model.Id)
 
