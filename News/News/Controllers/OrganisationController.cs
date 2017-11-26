@@ -7,13 +7,14 @@ using System.Web;
 using System.Web.Mvc;
 using Data;
 using Domain.Core.Entity;
+using News.Controllers.abstr;
 using News.Helpers;
 using News.Models;
 
 namespace News.Controllers
 {
     [Authorize]
-    public class OrganisationController : Controller
+    public class OrganisationController : GenerallController
     {
         // GET: Organisation
         public ActionResult Index()
@@ -24,7 +25,7 @@ namespace News.Controllers
 
         private IServiceManager manager;
 
-        public OrganisationController(IServiceManager manager)
+        public OrganisationController(IServiceManager manager):base(manager)
         {
             this.manager = manager;
         }
