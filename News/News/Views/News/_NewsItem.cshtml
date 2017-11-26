@@ -1,23 +1,23 @@
 ﻿@model Domain.Core.Entity.NewsItem
-
 @{
     ViewBag.Title = "_NewsItem";
+    string val = Model.index+ ".png";
 }
 
     
 <li class="news-list-item longread-list-item" data-longread-pubdate="2017-11-23T22:58:36">
     <div class="longread-block ">
         <a class="longread-block--img-holder" href="/articles/kak-delat-zakazyi-naaliexpress-sumom-10-klyuchevyih-nyuansov-371227/">
-            <img title="Как делать заказы на&nbsp;Aliexpress с&nbsp;умом: 10 ключевых нюансов" alt="Как делать заказы на&nbsp;Aliexpress с&nbsp;умом: 10 ключевых нюансов" width="293" height="360"
-                 src="~/Content/NewsImages/White_square.png" class="longread-block--img">
+            <img title="@Model.Title" alt="Как делать заказы на&nbsp;Aliexpress с&nbsp;умом: 10 ключевых нюансов" width="293" height="250"
+                 src="~/Content/NewsImages/@val" class="longread-block--img">
 
         </a><!-- longread-block-img-holder -->
         <div class="longread-block-wrapper">
             <div class="longread-block-title">
                 <a class="h2 longread-info--header" href="/articles/kak-delat-zakazyi-naaliexpress-sumom-10-klyuchevyih-nyuansov-371227/">
-                    Как делать заказы на&nbsp;Aliexpress с&nbsp;умом: 10 ключевых нюансов
+                    @Model.Title
                 </a>
-                <div class="h3 longread-info--subheader">Как начать покупать на&nbsp;«Али» и&nbsp;стать счастливым</div>
+                <div class="h3 longread-info--subheader">@Model.Text</div>
             </div> <!-- longread-block-title -->
             <div class="longread-info">
                 <a href="/articles/gajd/" class="longread-info--type">Гайд</a>

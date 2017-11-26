@@ -4,12 +4,30 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<a @*href="@Url.Action("CreateNews", "News")"*@>
+    <i class="glyphicon glyphicon-plus"></i>
+    <span>Add news</span>
+</a>
 <div class="row">
     <div class="col-md-1 col-xs-2">
         <img src="@Consts.AzureImagePath@Model.Avatar" style="border-radius: 50%; width: 70px; height: 70px;">
-        </div>
-        <div class="col-md-11 col-xs-10" >
-            <h4 style="vertical-align: middle">@Model.Name</h4>
-        </div>
     </div>
+    <div class="col-md-11 col-xs-10" >
+        <h4 style="vertical-align: middle">@Model.Name</h4>
+    </div>
+</div>
+<div id="forId"></div>
 
+<script>
+    $(document).ready(function() {
+        $(".glyphicon-plus").click(function () {
+            $.get("@Url.Action("CreateNews","News")",
+                function(data, status) {
+                    $("#forId").html(data);
+                    $("#createNews").modal('show');
+                });
+            
+            
+        });
+    });
+</script>

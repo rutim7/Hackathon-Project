@@ -9,6 +9,7 @@ using Domain.Core.Entity;
 using Data;
 using News.Controllers.abstr;
 using News.Helpers;
+using News.Models;
 
 namespace News.Controllers
 {
@@ -62,19 +63,29 @@ namespace News.Controllers
             this.manager = manager;
         }
 
+        public ActionResult AddNewTemplate(NewsItem model)
+        {
+            return View("_NewsItem");
+        }
         // GET: News
         public ActionResult Index()
         {
            List<NewsItem> news = new List<NewsItem>()
            {
-               new NewsItem {Title ="ggggg",Text = "Ggggggffffffffffffffffffffffffffffffgggggggggggggggggggggggggg"},
-               new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggg"},
-               new NewsItem {Title ="ggggg",Text = "Ggggggggggggggggggggggggggg"},
-               new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggfewefvrevrevrvvrgggg"},
-               new NewsItem {Title ="ggggg",Text = "Ggggggsdcvdrgdgdgdgggggggggggggggggggggg"},
-               new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggg"},
-               new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggg"},
-               new NewsItem {Title ="ggggg",Text = "Gggggggggggggggggggggggggggg"}
+               new NewsItem {Title ="Як робити замовлення на AliExpress.10 ключових моментів",
+                   Text = "Як почати купувати  і  бути щасливим",index = 1},
+               new NewsItem {Title ="Запрошуєм всіх на Хакатон",Text = "Що таке Хакатон та історії про Хакатоняшок",index = 2},
+               new NewsItem {Title ="Дівчата з Хакатону",Text = "Найкращі дівчата які відвідали Хакатон",index = 3},
+               new NewsItem
+               {
+                   Title ="Пожена в центральній частині міста",Text = "Найдзвичайна ситуація відбулася в центральній частині міста. Троє постраждалих",
+                   index = 4
+               },
+               new NewsItem {Title ="Страшилки у  Івано-Франківську",Text = "Історія про Чорну Марію, про Бабая ",index = 5},
+               new NewsItem {Title ="Знову у Франківську",Text = "На околицях Франківська, у Вовчинецьках викрали курей.",index = 6},
+               new NewsItem {Title ="Користь та шкода алкоголю",Text = "Наша редакція дослідити це питання власноруч та готова" +
+                                                                       "поділитися з вами своїми висновками",index = 7},
+               new NewsItem {Title ="Рецензія на Лігу Справедливості",Text = "Згадуєм хто такий Бетмен, Чудо-Жінка та знайомимось з новими персонажами",index = 8}
 
            };
             return View(news);
@@ -90,8 +101,50 @@ namespace News.Controllers
         public ActionResult CreateNews ()
         {
 
-            return View("CreateNews");
+            return View("_CreateNews");
         }
+        [HttpPost]
+        public ActionResult CreateResult(NewsItemViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.Image.FileName == String.Empty)
+                {
+                    return new HttpStatusCodeResult(400, "Failed to upload image");
+                }
+                else if (!model.Image.ContentType.Contains("data:image"))
+                {
+                    var blobContainer = new SenTimeBlobContainer();
+                    NewsItem org;
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        model.Image.InputStream.CopyTo(memoryStream);
+                        blobContainer.SaveFile(model.Image.FileName, model.Image.ContentType, memoryStream.ToArray());
+                        //model.Avatar = model.Image.FileName;
+                        org = new NewsItem()
+                        {
+                            Title = model.Title,
+                            Text = model.Text,
+                           Images = model.Images
+                        
+                        };
+                        org.Images.Add(new ImageNews()
+                        {
+                            ImageThumbnail = model.Image.FileName
+                        });
+                        manager.NewsService.Add(org);
+                        manager.NewsService.SaveChanges();
+                    }
+                    return Json( new { data = org });
+
+                }
+
+            }
+            return null;
+
+        }
+
+
 
         //[Authorize]
         //[HttpPost]

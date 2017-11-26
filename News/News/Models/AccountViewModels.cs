@@ -78,10 +78,15 @@ namespace News.Models
         public virtual int OrganisationId { get; set; }
         public string Avatar { get; set; }
 
-        public virtual ICollection<Domain.Core.Entity.NewsItem> News { get; set; }
+        public virtual ICollection<NewsItem> News { get; set; }
         [NotMapped]
         public HttpPostedFileBase Image { get; set; }
 
+    }
+    public class NewsItemViewModel:NewsItem
+    {
+        [NotMapped]
+        public HttpPostedFileBase Image { get; set; }
     }
 
     public class RegisterViewModel

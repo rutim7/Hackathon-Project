@@ -1,4 +1,4 @@
-﻿@model Domain.Core.Entity.NewsItem
+﻿@model News.Models.NewsItemViewModel
 <!-- Modal -->
 <div class="modal fade" id="createNews" role="dialog">
     <div class="modal-dialog">
@@ -10,29 +10,36 @@
                 <h4 class="modal-title">Create a new news</h4>
             </div>
             <div class="modal-body">
-           @using (Html.BeginForm("CreateNews", "News", FormMethod.Post @*new { @class = "form-horizontal", role = "form" }*@))
-           {
-            <div class="form-group">
-                @Html.LabelFor(m => Model.Title, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => Model.Title, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => Model.Text, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextAreaFor(m => Model.Text, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-default" value="Create" />
-                </div>
-            </div>
-           }
+                @using (Html.BeginForm("CreateNews", "News", FormMethod.Post,
+                    new { enctype = "multipart/form-data" } @*new { @class = "form-horizontal", role = "form" }*@))
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(m => Model.Title, new { @class = "control-label" })
+                        @Html.TextBoxFor(m => Model.Title, new { @class = "form-control" })
+                    </div>
+                    @*<div class="form-group">
+                        @Html.LabelFor(m => Model.Title, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => Model.Title, new { @class = "form-control" })
+                        </div>
+                    </div>*@
+                    <div class="form-group">
+                        @Html.LabelFor(m => Model.Text, new { @class = "control-label" })
+                        @Html.TextAreaFor(m => Model.Text, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label class = "control-label" for="image">Image:</label>
+                        @Html.EditorFor(m=>m.Image, new {@class = "form-control",type="file"})
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" class="btn btn-default" value="Create" />
+                        </div>
+                    </div>
+                }
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Фільтрувати</button>
+                <button type="button" class="btn btn-default" id="createNewsPost" data-dismiss="modal">Create</button>
             </div>
         </div>
 

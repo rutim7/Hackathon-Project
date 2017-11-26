@@ -2,7 +2,9 @@
     padding-top: 50px;
     padding-bottom: 20px;
 }
-
+.container {
+    max-width: 1370px !important;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -114,10 +116,10 @@ label {
 .news-list-item, .longread-list-item {
     position: relative;
     width: 293px;
-    height: 362px;
+    height: 250px;
     display: inline-block;
     vertical-align: top;
-    margin: 0 37px 40px 0;
+    margin: 0 37px 40px 17px;
     font-family: "Roboto",arial,sans-serif;
 }
 .news-info--header, .longread-info--header, .longread-info--subheader {
