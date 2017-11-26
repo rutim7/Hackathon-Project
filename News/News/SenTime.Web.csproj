@@ -273,6 +273,7 @@
     <Content Include="Content\NewsImages\3.png" />
     <Content Include="Content\NewsImages\4.png" />
     <Content Include="Content\jquery.multiselect.css" />
+    <Content Include="Content\NewsImages\White_square.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

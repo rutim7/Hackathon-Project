@@ -12,14 +12,13 @@ using News.Models;
 
 namespace News.Controllers
 {
-    [Authorize]
     public class OrganisationController : Controller
     {
         // GET: Organisation
         public ActionResult Index()
         {
             
-            return View(manager.OrganisationService.Find(3));
+            return View(manager.OrganisationService.Find(1));
         }
 
         private IServiceManager manager;
@@ -29,6 +28,7 @@ namespace News.Controllers
             this.manager = manager;
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Create()
         {
@@ -42,7 +42,7 @@ namespace News.Controllers
             return View("Details", organisation);
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         public ActionResult Create(OrganisationViewModel model)
         {
@@ -64,7 +64,8 @@ namespace News.Controllers
                          org= new Organisation()
                         {
                             Name = model.Name,
-                            Avatar = model.Image.FileName
+                            Avatar = model.Image.FileName,
+                            Owner = Cur
                         };
                         manager.OrganisationService.Add(org);
                         manager.OrganisationService.SaveChanges();

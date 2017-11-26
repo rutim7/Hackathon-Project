@@ -16,30 +16,32 @@
         <div class="container">
             
             <div class="navbar-header">
-     
-                <ul class="nav navbar-nav">               
-                    <li class="dropdown">
-                        <a class="dropdown-toggle glyphicon glyphicon-align-justify" data-toggle="dropdown" href="#"></a>
-                        <ul class="dropdown-menu">
-                            @*<li><a href="#"><i class="glyphicon glyphicon-plus"></i>Add News</a></li>*@
-                            <li>
-                                <a @*href="@Url.Action("CreateNews", "News")"*@>
-                                    <i class="glyphicon glyphicon-plus"></i>
-                                    <span>Add news</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("Index", "News")">
-                                    <i class="glyphicon glyphicon glyphicon-briefcase"></i>
-                                    <span>My Organisations</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("Create", "Organisation")">Create Group</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+     @if (Request.IsAuthenticated)
+     {
+         <ul class="nav navbar-nav">
+             <li class="dropdown">
+                 <a class="dropdown-toggle glyphicon glyphicon-align-justify" data-toggle="dropdown" href="#"></a>
+                 <ul class="dropdown-menu">
+                     @*<li><a href="#"><i class="glyphicon glyphicon-plus"></i>Add News</a></li>*@
+                     <li>
+                         <a @*href="@Url.Action("CreateNews", "News")"*@>
+                             <i class="glyphicon glyphicon-plus"></i>
+                             <span>Add news</span>
+                         </a>
+                     </li>
+                     <li>
+                         <a href="@Url.Action("Index", "News")">
+                             <i class="glyphicon glyphicon glyphicon-briefcase"></i>
+                             <span>My Organisations</span>
+                         </a>
+                     </li>
+                     <li>
+                         <a href="@Url.Action("Create", "Organisation")">Create Group</a>
+                     </li>
+                 </ul>
+             </li>
+         </ul>
+     }
                 @Html.ActionLink("SenTime", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 
             </div>
