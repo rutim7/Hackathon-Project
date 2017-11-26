@@ -1,44 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Web;
+﻿using System.Security.Principal;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Data;
-using Microsoft.Ajax.Utilities;
-using Microsoft.AspNet.Identity;
-using News.Models;
-using ApplicationUser = Domain.Core.Entity.ApplicationUser;
+using Domain.Core.Entity;
 
-namespace News.Controllers.abstr
+namespace News.Controllers.Abstract
 {
     public abstract class GenerallController : Controller
     {
         // GET: General
-        protected UserManager<ApplicationUser> UserManager { get; set; }
-        
-
         //public ApplicationUser CurrentUser { get; private set; }
         private IIdentity _identity;
         private IServiceManager _manager;
-        private ApplicationUser _currentUser;
-        private HttpContextBase _context;
         public ApplicationUser CurrentUser { get; private set; }
-        //public ApplicationUser CurrentUser
-        //{
-        //    get
-        //    {
-        //        if (_currentUser == null)
-        //        {
-        //            var _identity = _context.User.Identity;
-        //            _currentUser = _manager.AppUserService.FindNoAsync(_identity.Name);
-        //        }
-
-        //        return _currentUser;
-        //    }
-        //    set { _currentUser = value; }
-        //}
         protected GenerallController(IServiceManager manager)
         {
             _manager = manager;

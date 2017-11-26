@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using Domain.Core.Entity;
 using Data;
 using Domain.Core.Enums;
-using News.Controllers.abstr;
+using News.Controllers.Abstract;
 using News.Helpers;
 
 namespace News.Controllers
@@ -27,6 +27,7 @@ namespace News.Controllers
             new Categories("Розваги", new [] {"Фільми","Ігри", "уваі"}),
             new Categories("Відпочинок", new [] {"Популярні курорти", "Тури", "Корупція"})
         };
+
         public class Categories
         {
             public string Name;
@@ -59,7 +60,8 @@ namespace News.Controllers
         }
 
         private IServiceManager manager;
-        public NewsController(IServiceManager manager):base(manager)
+
+        public NewsController(IServiceManager manager) : base(manager)
         {
             this.manager = manager;
         }
