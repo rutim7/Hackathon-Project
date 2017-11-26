@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using Data;
 using Domain.Core.Entity;
-using News.Controllers.abstr;
+using News.Controllers.Abstract;
 using News.Helpers;
 using News.Models;
 
@@ -16,10 +16,11 @@ namespace News.Controllers
     public class OrganisationController : GenerallController
     {
         // GET: Organisation
-        public ActionResult Index()
-        {
-            return View();
-
+        public async Task<ActionResult> Index()
+        {     
+            //return View(manager.OrganisationService.Find(1));
+            var listOrganisations = await manager.OrganisationService.GetAll();
+            return View("ListOrganisations", listOrganisations);
         }
 
         public ActionResult GetMyOrg()
@@ -46,6 +47,8 @@ namespace News.Controllers
         public async Task<ActionResult> Details(int id)
         {
             var organisation = await manager.OrganisationService.Find(id);
+            ViewBag.IsOwner = CurrentUser.Id == organisation.OwnerId;
+
             return View("Details", organisation);
         }
 

@@ -22,82 +22,145 @@
                         <li class="dropdown">
                             <a class="dropdown-toggle glyphicon glyphicon-align-justify" data-toggle="dropdown" href="#"></a>
                             <ul class="dropdown-menu">
-                                @*<li><a href="#"><i class="glyphicon glyphicon-plus"></i>Add News</a></li>*@
                                 <li>
-                                    <a @*href="@Url.Action("CreateNews", "News")"*@>
-                                        <i class="glyphicon glyphicon-plus"></i>
-                                        <span>Add news</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Action("Index", "News")">
+                                    <a href="@Url.Action("Index", "Organisation")">
                                         <i class="glyphicon glyphicon glyphicon-briefcase"></i>
-                                        <span>My Organisations</span>
+                                        <span>Мої Організації</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="@Url.Action("Create", "Organisation")">Create Group</a>
+                                    <a href="@Url.Action("Create", "Organisation")">                              
+                                        <i class="glyphicon glyphicon-plus-sign"></i>
+                                        <span>Створити Організацію</span>
+                                    </a>
                                 </li>
                             </ul>
                         </li>
                     </ul>
                 }
-                @Html.ActionLink("SenTime", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("SenTime", "Index", "News", new { area = "" }, new { @class = "navbar-brand" })
 
             </div>
             <div class="navbar-collapse collapse">
-                <span class="news-header">News</span>
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li><a class="chooseCategories">Вибрати категорії</a></li>
+@if (Request.IsAuthenticated)
+{
+    <ul class="nav navbar-nav">
+    
+        <li><a class="chooseCategories">Вибрати категорії</a></li>
+    </ul>
+    }
+       
+        @Html.Partial("_LoginPartial")
+    @*@if (Request.IsAuthenticated)
+    {
+        <div class="head-auth-ava pull-right ">
+            <span class="post-avatar">
+                <a href="">
+                    <img src="http://cdn.fishki.net/upload/post/201504/13/1500568/guy-fawkes-mask-v-for-vendetta-i7.jpg" alt="">
+                </a>
+            </span>
+            <div class="dropdown avatar-menu">
+                <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="@Url.Action("Index", "News")">
+                            <i class="glyphicon glyphicon glyphicon-user"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Login", "Account")">
+                            <i class="glyphicon glyphicon glyphicon-log-out"></i>
+                            <span>Sign out</span>
+                        </a>
+                    </li>
+
+
                 </ul>
-                @Html.Partial("_LoginPartial")
+            </div>
+        </div>*@
+                @*}*@
+                @*else
+                {
+                    @Html.Partial("_LoginPartial")
 
-                @*<div class="center-div">
-                        <p>News</p>
-                    </div>*@
-                <div class="head-auth-ava pull-right ">
-                    <span class="post-avatar">
-                        <a href="">
-                            <img src="http://cdn.fishki.net/upload/post/201504/13/1500568/guy-fawkes-mask-v-for-vendetta-i7.jpg" alt="">
-                        </a>
-                    </span>
-                    <div class="dropdown avatar-menu">
-                        <a class="dropdown-toggle" type="button" data-toggle="dropdown">
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="@Url.Action("Index", "Home")">
-                                    <i class="glyphicon glyphicon glyphicon-user"></i>
-                                    <span>Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("Login", "Account")">
-                                    <i class="glyphicon glyphicon glyphicon-log-out"></i>
-                                    <span>Sign out</span>
-                                </a>
-                            </li>
-
-
-                        </ul>
-                    </div>
-                </div>
+                }*@
 
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        @*<hr />*@
-        @*<footer>
+<div class="container body-content">
+    @RenderBody()
+    @*<hr />*@
+    @*<footer>
                 <p>&copy; @DateTime.Now.Year - SenTime</p>
             </footer>*@
-    </div>
+</div>
+    
+<div class="modal fade" id="modalSubCategories" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-sub-category" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title name-category">Виберіть категорію</h4>
+            </div>
+            <div class="modal-body body-for-subCategoties">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default save-category" data-dismiss="modal">Гаразд</button>
+            </div>
+        </div>
 
+    </div>
+</div>
+<script>
+    $(document).on('click', '.chooseCategories', function () {
+        $.ajax({
+            url: '@Url.Action("GetUserCategories","News")',
+            data: {},
+            type:'post',
+            success:function(data) {
+                $('#modalSubCategories').modal('show');
+                $('.body-for-subCategoties').html(data);
+            }
+        });
+    });
+
+    var userStringCategory;
+    $(document).on("click",
+        ".checkCategory",
+        function () {
+            userStringCategory = '';
+            $.each($('.checkCategory'),
+                function () {
+                    if ($(this).is(':checked')) userStringCategory += $(this).attr('value') + ';';
+                });
+            userStringCategory = userStringCategory.substring(0, userStringCategory.length - 1);
+        });
+
+
+    $(document).on("click",
+        ".save-category",
+        function () {
+            $.ajax({
+                url: '@Url.Action("SaveCategories", "News")',
+                data: { categories: userStringCategory },
+                type: 'post',
+                success: function (data) {
+                    if (data.status === "OK") {
+                        window.location.href = '@Url.Action("Index", "News")';
+                    }
+                    else {
+                        alert("Сталося лихо! Повторіть пізніше");
+                    }
+                }
+            });
+
+        });
+</script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

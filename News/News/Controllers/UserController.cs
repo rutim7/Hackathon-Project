@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Data;
-using News.Controllers.abstr;
+using News.Controllers.Abstract;
 
 namespace News.Controllers
 {
