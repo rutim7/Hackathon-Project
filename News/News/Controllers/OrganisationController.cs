@@ -18,8 +18,14 @@ namespace News.Controllers
         // GET: Organisation
         public ActionResult Index()
         {
-            
-            return View(manager.OrganisationService.Find(1));
+            return View();
+
+        }
+
+        public ActionResult GetMyOrg()
+        {
+
+            return PartialView("_MyOrg", manager.OrganisationService.GetOrgByUSer(CurrentUser.Id));
         }
 
         private IServiceManager manager;
@@ -41,6 +47,35 @@ namespace News.Controllers
         {
             var organisation = await manager.OrganisationService.Find(id);
             return View("Details", organisation);
+        }
+
+        [HttpPost]
+        public ActionResult SaveProfilePicture(string imageContent,int id)
+        {
+            if (imageContent == String.Empty)
+            {
+                return new HttpStatusCodeResult(400, "Failed to upload image");
+            }
+            else if (!imageContent.Contains("data:image"))
+            {
+                const int widthLarge = 675;
+                const int heightLarge = 450;
+
+                var blobContainer = new SenTimeBlobContainer();
+                Organisation organisation = manager.OrganisationService.FindSync(id);
+                organisation.Avatar = blobContainer.GetPictureWithDefinedSizeAndExtention(imageContent, organisation.Avatar, widthLarge, heightLarge,
+                    "Jpeg", "");
+                manager.OrganisationService.UpdateEntity(organisation);
+                manager.OrganisationService.SaveChanges();
+
+            }
+            return Json(new {js="sucess"});
+        }
+
+
+        public ActionResult ShowUploadImageContent()
+        {
+            return PartialView("_ImageUpload");
         }
 
         [Authorize]
@@ -71,10 +106,15 @@ namespace News.Controllers
                         manager.OrganisationService.Add(org);
                         manager.OrganisationService.SaveChanges();
                     }
-                    return RedirectToAction("Datails", new { id = org.Id});
+                    //return RedirectToAction("Details", new { id = org.Id });
+                    return RedirectToAction("Index", "User");
+
+
+
+
 
                 }
-               
+
             }
             return null;
         }

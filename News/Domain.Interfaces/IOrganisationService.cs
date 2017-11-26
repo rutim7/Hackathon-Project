@@ -10,6 +10,9 @@ namespace Domain.Interfaces
 {
     public interface IOrganisationService : IDisposable, IGeneralService<Organisation>
     {
+        List<Organisation> GetOrgByUSer(string id);
+
+
         void Save();
     }
 }

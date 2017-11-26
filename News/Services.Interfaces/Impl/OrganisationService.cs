@@ -20,6 +20,10 @@ namespace Data.Services
          
         }
 
+        public List<Organisation> GetOrgByUSer(string id)
+        {
+            return DbSet.Where(c => c.Owner.Id == id).ToList();
+        }
         //public List<NewsItem> News(Organisation organisation)
         //{
         //    return Context.Entry(organisation).Entity.News.ToList();

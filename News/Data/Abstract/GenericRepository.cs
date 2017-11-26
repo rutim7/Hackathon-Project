@@ -23,6 +23,10 @@ namespace Data.Repositories
         {
            return await DbSet.ToListAsync();
         }
+        public TEntity FindSync(object id)
+        {
+           return DbSet.Find(id);
+        }
 
         public async Task<TEntity> Find(object id)
         {
@@ -64,6 +68,6 @@ namespace Data.Repositories
             Context.SaveChanges();
         }
 
-       
+        
     }
 }

@@ -2,32 +2,270 @@
 @using News.Helpers
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var count = 0;
 }
+@Html.HiddenFor(m=>m.Id,new {id="OrganisationId"})
+<div class="text-center"><h3>My Groups</h3></div>
+<hr />
+<div class="container">
+<div class="col-lg-12">
+    <div class="col-lg-3 shadow-group active">
+        <div class="row">
+            <div class="col-md-4 col-xs-2">
+                <img src="@Consts.AzureImagePath@Model.Avatar" style="border-radius: 50%; width: 70px; height: 70px;">
+            </div>
+            <div class="col-md-8 col-xs-10" style="text-align: center;">
+                <h4 style="vertical-align: middle">@Model.Name</h4>
+                <btn class="openModalCreatePost btn btn-primary">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    <span>Додати пост</span>
+                </btn>
+            </div>
 
-<a @*href="@Url.Action("CreateNews", "News")"*@>
-    <i class="glyphicon glyphicon-plus"></i>
-    <span>Add news</span>
-</a>
-<div class="row">
-    <div class="col-md-1 col-xs-2">
-        <img src="@Consts.AzureImagePath@Model.Avatar" style="border-radius: 50%; width: 70px; height: 70px;">
+        </div>
     </div>
-    <div class="col-md-11 col-xs-10">
-        <h4 style="vertical-align: middle">@Model.Name</h4>
-    </div>
-    <div class="openModalCreatePost">Додати пост</div>
+    @foreach (var item in Model.News)
+    {
+        ++count;
+        if (count == 1)
+        { continue;}
+
+
+        <div class="col-lg-3 shadow-group">
+            <div class="row">
+                <div class="col-md-3 col-xs-2">
+                    <img src="@Consts.AzureImagePath@Model.Avatar" style="border-radius: 50%; width: 70px; height: 70px;">
+                </div>
+                <div class="col-md-9 col-xs-10" style="text-align: center;">
+                    <h4 style="vertical-align: middle">@Model.Name</h4>
+                    <btn class="openModalCreatePost btn btn-primary">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        <span>Додати пост</span>
+                    </btn>
+                </div>
+
+            </div>
+        </div>
+       
+    }
 </div>
-@Html.Partial("_CreateNews", Model.Id)
+</div>
 
+<hr/>
+<hr/>
+@Html.Partial("_CreateNews", Model.Id)
+<div id="newsContainer">
+    <div class="text-center"><h3>News</h3></div>
+   <br/>
+    @{
+        Html.RenderAction("GetAllNewsInOrganisation", "News", new {id = Model.Id});
+    }
+</div>
+<link href="~/Scripts/cropper/cropper.min.css" rel="stylesheet" />
+<script src="~/Scripts/cropper/cropper.min.js"></script>
 <script>
+    function LoadProjectSummaryImageCropper(aspectRatioIndex) {
+        aspectRatioIndex = typeof aspectRatioIndex !== 'undefined' ? aspectRatioIndex : 1.618;
+        var $image = $("#image");
+
+        $image.cropper({
+            aspectRatio: aspectRatioIndex,
+            preview: ".img-preview",
+            done: function (data) {
+                $("#UploadImage")
+                    .val($image
+                        .cropper("getDataURL")
+                        .replace(/^data:image\/(png|jpg|jpeg|gif);base64,/, ""));
+
+            }
+        });
+
+        var $inputImage = $("#LoadImage");
+        if (window.FileReader) {
+            $inputImage.change(function () {
+                var fileReader = new FileReader(),
+                    files = this.files,
+                    file;
+
+                if (!files.length) {
+                    return;
+                }
+
+                file = files[0];
+
+                if (/^image\/\w+$/.test(file.type)) {
+                    fileReader.readAsDataURL(file);
+                    fileReader.onload = function () {
+                        $inputImage.val("");
+                        $image.cropper("reset", true).cropper("replace", this.result);
+
+                    };
+                } else {
+                    showMessage("Please choose an image file.");
+                }
+            });
+        } else {
+            $inputImage.addClass("hide");
+        }
+
+        $("#download")
+            .click(function () {
+                window.open($image.cropper("getDataURL"));
+            });
+
+        $("#zoomIn")
+            .click(function () {
+                $image.cropper("zoom", 0.1);
+            });
+
+        $("#zoomOut")
+            .click(function () {
+                $image.cropper("zoom", -0.1);
+            });
+
+        $("#rotateLeft")
+            .click(function () {
+                $image.cropper("rotate", 45);
+            });
+
+        $("#rotateRight")
+            .click(function () {
+                $image.cropper("rotate", -45);
+            });
+
+        $("#setDrag")
+            .click(function () {
+                $image.cropper("setDragMode", "crop");
+            });
+    }
     $(document).ready(function () {
-        $(".openModalCreatePost").click(function () {
+        $(document).on('shown.bs.modal', '#OrganisationProfilePictureModal', function () {
+            if ($("#formTitle").val() === "") {
+                console.log("gg");
+            }
+               
+               $("#UploadUserProfileImageContainer").append("Title is required");
+            if ($("#formText").val() === "") {
+                console.log("gg");
+           
+                $("#UploadUserProfileImageContainer").append("Text is required");
+                return;
+            }
+                
+            $.ajax({
+                type: 'GET',
+                url: '/Organisation/ShowUploadImageContent',
+                dataType: 'html',
+                success: function (data) {
+                    $("#OrganisationProfilePictureContainer").html(data);
+                    var aspectRatio = 3 / 2;
+                    LoadProjectSummaryImageCropper(aspectRatio);
+                }
+            });
+        });
+
+        $(document).on('click', '#SaveOrganisationProfilePicture', function () {
+            var uploadImageValue = $('#UploadImage').val();
+            $.ajax({
+                type: 'POST',
+                url: '/Organisation/SaveProfilePicture',
+                data: { 'imageContent': uploadImageValue, 'id': $("#OrganisationId").val() },
+                dataType: 'html',
+                success: function (data) {
+                    if (data === "sucess") {
+                        alert("Ggg");
+                    }
+                    $("#GeneralDetails").html(data);
+                    $('#OrganisationProfilePictureContainer').empty();
+                    $('#OrganisationProfilePictureModal.modal.inmodal.fade').modal('hide');
+                    $('.modal-backdrop').remove();
+                    $('body').removeClass('modal-open');
+                    //$.ajax({
+                    //    type: 'GET',
+                    //    url: '/Account/GetUserInformation',
+                    //    dataType: 'html',
+                    //    success: function (dataSecond) {
+                    //        $("#UserInformation").html(dataSecond);
+                    //    }
+                    //});
+                },
+                error: function (error, message) {
+                    if (error.status == 400) {
+                        $('#ErrorMessage').text(error.statusText); // display the error message in the span tag
+                    }
+                }
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $(".openModalCreatePost").click(function() {
             $("#createNews").modal('show');
         });
 
         $(".createPost").click(function () {
-            $("#uploadImage").submit();
-        });
-    });
 
+
+
+
+
+            $("#uploadImage").submit();
+            @*$("#AvatarNews").val($("input#uploadEditorImage").get(0).files[0].name);
+            $.get( '@Url.Action("AddNewTemplate", "News")',
+                $("#uploadImage").serialize(),
+                function(data) {
+                    $("#newsContainer").append(data);
+                }
+                );*@
+
+           
+            //$("#uploadImage").submit(function () {
+            @*var formdata = new FormData();
+            var file = $("input#uploadEditorImage").get(0).files[0];
+            formdata.append("image", file);
+            jQuery.ajax({
+                url: '@Url.Action("CreateNews", "News")',
+                type: "POST",
+                data: $("input#uploadEditorImage").get(0).files[0],
+                processData: false,
+                contentType: false,
+                success: function() {
+                    console.log("Ggg");
+                }
+            });
+        });*@
+            //$.ajax({
+            //    type: "POST",
+            //    url: $('#uploadImage').attr('action'),
+            //    data: $('#uploadImage').serialize(),
+            //    success: function(data) {
+            //        console.log("g'g");
+            //    },
+            //    dataType: 'json'
+            //});
+        });
+
+        //});
+    });
 </script>
+
+<div class="modal inmodal fade" id="OrganisationProfilePictureModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Upload User Profile Image</h4>
+            </div>
+            <div class="modal-body" id="UploadUserProfileImageContainer">
+                
+               
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-grey" data-dismiss="modal" id="CloseImageUpload">Close</button>
+                <button type="button" class="btn btn-outline btn-primary" id="SaveOrganisationProfilePicture">Save Сhanges</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
@@ -63,10 +64,15 @@ namespace News.Controllers
         {
             this.manager = manager;
         }
+        public  ActionResult GetAllNewsInOrganisation(int id)
+        {
+            var organisation = manager.OrganisationService.FindSync(id);
+            return PartialView("_OrganisationNews", organisation.News.ToList());
+        }
 
         public ActionResult AddNewTemplate(NewsItem model)
         {
-            return View("_NewsItem");
+            return View("_NewsItem",model);
         }
         // GET: News
         public ActionResult Index()
@@ -105,7 +111,8 @@ namespace News.Controllers
         [Authorize]
         [HttpPost]
         public RedirectToRouteResult CreateNews(string text, string title, HttpPostedFileBase image, int orgId, Category category)
-        { 
+        {
+            var picture = System.Web.HttpContext.Current.Request.Files["image"];
             if (image.FileName == String.Empty)
             {
                 return null;

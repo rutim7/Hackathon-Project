@@ -1,6 +1,6 @@
-﻿@model Domain.Core.Entity.NewsItem
+﻿@using News.Helpers
+@model Domain.Core.Entity.NewsItem
 @{
-    ViewBag.Title = "_NewsItem";
     string val = Model.index+ ".png";
 }
 
@@ -9,7 +9,7 @@
     <div class="longread-block ">
         <a class="longread-block--img-holder" href="/articles/kak-delat-zakazyi-naaliexpress-sumom-10-klyuchevyih-nyuansov-371227/">
             <img title="@Model.Title" alt="Как делать заказы на&nbsp;Aliexpress с&nbsp;умом: 10 ключевых нюансов" width="293" height="250"
-                 src="~/Content/NewsImages/@val" class="longread-block--img">
+                 src="@Consts.AzureImagePath@Model.AvatarNews" class="longread-block--img">
 
         </a><!-- longread-block-img-holder -->
         <div class="longread-block-wrapper">

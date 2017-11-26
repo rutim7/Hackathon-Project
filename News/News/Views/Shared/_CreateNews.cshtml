@@ -16,34 +16,36 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="title">Title:</label>
-                        <input type="text" class="form-control" name="title" id="title" style="max-width: 100%">
+                        <input type="text" class="form-control" name="title" id="formTitle" style="max-width: 100%">
                     </div>
                     <div class="form-group">
                         <label for="Text">Text:</label>
-                        <textarea class="form-control" rows="5" name="Text" id="Text" style="max-width: 100%"></textarea>
+                        <textarea class="form-control" rows="5" name="Text" id="formText" style="max-width: 100%"></textarea>
                     </div>
-                    
+                    <input type="hidden" name="AvatarNews" id="AvatarNews"/>
                     <div class="form-group">
-                    <select class="selectCategory" name="category">
-                        @{
-                            var itemNames = Enum.GetValues(typeof(Category));
-                        }
-                           @foreach (var item in itemNames)
-                           {
-                            <option value="@item">@item</option>
-                           }
+                        <select class="selectCategory" name="category">
+                            @{
+                                var itemNames = Enum.GetValues(typeof(Category));
+                            }
+                            @foreach (var item in itemNames)
+                            {
+                                <option value="@item">@item</option>
+                            }
                         </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="uploadEditorImage">Image:</label>
-                            <input type="file" name="Image" id="uploadEditorImage" style="width: 100%;" />
-                        </div>
                     </div>
+
+                    <div class="form-group">
+                        <label for="uploadEditorImage">Image:</label>   <a href="#" data-toggle="modal" data-target="#OrganisationProfilePictureModal"><i class="fa fa-edit"></i>Click here to UploadImage</a>
+                       
+                       
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-default createPost" data-dismiss="modal" value="Create"/>
+                </div>
             </form>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default createPost" data-dismiss="modal">Створити</button>
-            </div>
+            
         </div>
 
     </div>

@@ -1,0 +1,31 @@
+﻿<div id="ErrorMessage" class="save-prj-image-error"></div>
+<h4>
+    Image will uppear here
+</h4>
+<div class="row">
+    <div class="col-md-8">
+        <div class="image-crop">
+            <img src="" id="image">
+            @*<img src="~/Content/img/noProjectImage.png" />*@
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h4>Preview image</h4>
+        <div class="img-preview img-preview-sm"></div>
+        <h4>Choose picture</h4>
+        <div class="btn-group">
+            <label title="Upload image file" for="LoadImage" class="btn btn-primary">
+                <input type="file" accept="image/*" name="file" id="LoadImage" class="hide">
+                <input accept="image/*" id="UploadImage" type="hidden" value="">
+                Upload new image
+            </label>
+            <label title="Donload image" id="download" class="btn btn-primary">Download</label>
+        </div>
+        <div class="btn-group">
+            <button class="btn btn-grey" id="zoomIn" type="button">Zoom In</button>
+            <button class="btn btn-grey" id="zoomOut" type="button">Zoom Out</button>
+            <button class="btn btn-grey" id="rotateLeft" type="button">Rotate Left</button>
+            <button class="btn btn-grey" id="rotateRight" type="button">Rotate Right</button>
+        </div>
+    </div>
+</div>

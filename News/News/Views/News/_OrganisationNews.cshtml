@@ -1,0 +1,17 @@
+﻿
+@model List<Domain.Core.Entity.NewsItem>
+
+<div class="row">
+
+    <div class="row row-flex row-flex-wrap">
+
+        @foreach (var n in Model)
+        {
+            @Html.Partial("_NewsItem",n)
+        }
+
+    </div><!--/row-->
+
+
+</div>
+
