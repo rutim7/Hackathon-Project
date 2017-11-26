@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAppUserRepository.cs" />
+    <Compile Include="ICategories.cs" />
     <Compile Include="IGeneralService.cs" />
     <Compile Include="INewsService.cs" />
     <Compile Include="IOrganisationService.cs" />
